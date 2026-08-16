@@ -504,10 +504,10 @@ function renderShellStart(array $branding, array $mainMenu): string {
     $desktopMenu = renderDesktopMenuItems($mainMenu);
     $mobileMenu = renderMobileMenuItems($mainMenu);
     $headerLogo = h((string) ($branding['logoHeader'] ?? '/src/wkc-logo.svg'));
-    $headerWordmark = h((string) ($branding['siteName'] ?? SITE_NAME));
+    $headerWordmark = 'WKC';
     return '<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">'
         . '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between h-20 items-center">'
-        . '<a href="/" class="flex items-center group"><img src="' . $headerLogo . '" data-brand-logo="header" alt="Logo" class="h-12 w-auto max-w-[11rem]"><span class="brand-wordmark hidden sm:inline">' . $headerWordmark . '</span></a>'
+        . '<a href="/" class="flex items-center group"><img src="' . $headerLogo . '" data-brand-logo="header" alt="Logo" class="h-12 w-auto max-w-[6rem]"><span class="brand-wordmark hidden sm:inline">' . $headerWordmark . '</span></a>'
         . '<div class="hidden lg:flex items-center gap-1">' . $desktopMenu . '</div>'
         . '</div></div></nav>'
         . '<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[998] hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>'
@@ -515,7 +515,7 @@ function renderShellStart(array $branding, array $mainMenu): string {
         . '<div class="bg-white rounded-t-3xl shadow-2xl shadow-black/20 max-h-[85vh] overflow-y-auto">'
         . '<div class="flex justify-center pt-3 pb-2"><div class="w-12 h-1.5 bg-gray-300 rounded-full"></div></div>'
         . '<div class="px-6 pb-4"><p class="text-xs font-bold text-primary uppercase tracking-widest mb-3">Navigation</p>'
-        . '<div class="flex items-center gap-3"><img src="' . $headerLogo . '" data-brand-logo="header" alt="Logo" class="h-10 w-auto mb-4 max-w-[10rem]"><span class="brand-wordmark text-xl mb-4">' . $headerWordmark . '</span></div></div>'
+        . '<div class="flex items-center gap-3"><img src="' . $headerLogo . '" data-brand-logo="header" alt="Logo" class="h-10 w-auto mb-4 max-w-[6rem]"><span class="brand-wordmark brand-wordmark-mobile mb-4">' . $headerWordmark . '</span></div></div>'
         . '<nav class="px-6 pb-8 space-y-1">' . $mobileMenu . '</nav></div></div>'
         . '<button id="mobile-menu-btn" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[1000] lg:hidden w-14 h-14 bg-primary text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center hover:bg-primary-dark transition-all active:scale-95">'
         . '<span class="material-symbols-outlined text-2xl menu-icon transition-transform duration-300">menu</span>'
@@ -542,7 +542,7 @@ function renderShellEnd(array $branding, array $footerMenu): string {
         . '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">'
         . '<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">'
         . '<div class="md:col-span-2">'
-        . '<p class="text-gray-400 max-w-sm leading-relaxed text-sm">Die WKC ist eine parteiunabhängige Vereinigung engagierter Bürgerinnen und Bürger, die sich für die positive Entwicklung unserer Heimat einsetzt.</p>'
+        . '<p class="text-gray-400 max-w-sm leading-relaxed text-sm">Die WKC ist ein engagierter Karnevalsverein für Gemeinschaft, Brauchtum und gelebte Tradition.</p>'
         . '</div>'
         . '<div><h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-gray-400">Navigation</h4><ul class="space-y-3 text-sm">' . $menuLinks . '</ul></div>'
         . '<div><h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-gray-400">Rechtliches</h4>'
@@ -902,12 +902,7 @@ $head = renderSeoHead($title, $description, $canonical, $noindex, $nofollow, $og
                                 Mitmachen
                             </span>
                             <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">Selbst aktiv werden und mitgestalten</h2>
-                            <p class="text-white/80 text-lg mb-6 leading-relaxed">Sie möchten sich für ein lebenswertes Wulften einsetzen? Werden Sie Teil unserer Wählergruppe und gestalten Sie die Zukunft unserer Gemeinde aktiv mit.</p>
-                            <ul class="space-y-3 mb-8">
-                                <li class="flex items-center gap-3 text-white/90"><span class="material-symbols-outlined text-white bg-white/20 rounded-full p-1 text-sm">check</span>Parteiunabhängig & basisdemokratisch</li>
-                                <li class="flex items-center gap-3 text-white/90"><span class="material-symbols-outlined text-white bg-white/20 rounded-full p-1 text-sm">check</span>Aktiv mitbestimmen & Ideen einbringen</li>
-                                <li class="flex items-center gap-3 text-white/90"><span class="material-symbols-outlined text-white bg-white/20 rounded-full p-1 text-sm">check</span>Gemeinsam für unsere Heimat</li>
-                            </ul>
+                            <p class="text-white/80 text-lg mb-6 leading-relaxed">Willst du dem Verein beitreten und uns unterstützen? Dann werde jetzt Mitglied beim WKC.</p>
                         </div>
 
                         <div class="bg-white rounded-2xl p-8 shadow-2xl scroll-animate animation-delay-100">

@@ -57,6 +57,27 @@
                 background: color-mix(in srgb, var(--admin-primary) 12%, transparent) !important;
                 color: var(--admin-primary) !important;
             }
+
+            .sidebar-header {
+                position: relative;
+                justify-content: center !important;
+            }
+
+            .sidebar-header #collapseBtn {
+                position: absolute;
+                right: 0;
+            }
+
+            .sidebar-logo-link {
+                display: block;
+                margin-inline: auto;
+                text-align: center;
+            }
+
+            .sidebar-logo-link img {
+                max-width: 6rem !important;
+                margin-inline: auto;
+            }
         `;
         document.head.appendChild(style);
     }
