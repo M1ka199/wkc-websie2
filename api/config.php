@@ -57,8 +57,12 @@ if (!is_array($smtpSettings)) {
         'pass' => SMTP_PASS,
         'from' => SMTP_FROM,
         'from_name' => SMTP_FROM_NAME,
+        'contact_recipient' => CONTACT_RECIPIENT,
         'secure' => in_array(SMTP_SECURE, ['tls', 'ssl'], true) ? SMTP_SECURE : 'tls',
     ]);
+} elseif (!array_key_exists('contact_recipient', $smtpSettings)) {
+    $smtpSettings['contact_recipient'] = CONTACT_RECIPIENT;
+    setAppSetting('smtp', $smtpSettings);
 }
 
 function resolveDatabasePath(): string {
@@ -789,6 +793,7 @@ function setupDatabase(?PDO $db = null): void {
                 'pass' => SMTP_PASS,
                 'from' => SMTP_FROM,
                 'from_name' => SMTP_FROM_NAME,
+                'contact_recipient' => CONTACT_RECIPIENT,
                 'secure' => in_array(SMTP_SECURE, ['tls', 'ssl'], true) ? SMTP_SECURE : 'tls',
             ],
             'forms' => [

@@ -241,6 +241,7 @@ if ($method === 'POST') {
             'eventsEnabled' => !empty($_POST['events_enabled']),
             'galleryPreviewEnabled' => !empty($_POST['gallery_preview_enabled']),
             'sliderEnabled' => !empty($_POST['slider_enabled']),
+            'titleAreaEnabled' => !empty($_POST['title_area_enabled']),
             'sliderItems' => $cleanSliderItems,
         ], JSON_UNESCAPED_UNICODE);
     }
