@@ -551,6 +551,11 @@ $canEditContent = $isAdmin || $isEditor;
                                     <label for="smtpFromName" class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-1">Absender-Name</label>
                                     <input type="text" id="smtpFromName" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm" placeholder="WKC">
                                 </div>
+                                <div class="md:col-span-2">
+                                    <label for="smtpContactRecipient" class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-1">Kontakt-Formular Empfänger</label>
+                                    <input type="email" id="smtpContactRecipient" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm" placeholder="kontakt@example.org">
+                                    <p class="mt-1 text-xs text-gray-500">Wird für das Standard-Kontaktformular verwendet. Fallback bleibt die Server-Umgebungsvariable, falls leer.</p>
+                                </div>
                             </div>
                         </div>
 

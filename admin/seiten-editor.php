@@ -163,6 +163,10 @@ $pageId = intval($_GET['id'] ?? 0);
                     </div>
                     <label class="inline-flex items-center gap-2 text-sm font-medium text-gray-700"><input id="pageNoindex" type="checkbox" class="rounded border-gray-300 text-primary">noindex</label>
                     <label class="inline-flex items-center gap-2 text-sm font-medium text-gray-700"><input id="pageNofollow" type="checkbox" class="rounded border-gray-300 text-primary">nofollow</label>
+                    <label class="inline-flex items-center gap-2 text-sm font-medium text-gray-700">
+                        <input id="pageTitleAreaEnabled" type="checkbox" class="rounded border-gray-300 text-primary" checked>
+                        Titelbereich (Breadcrumb + H1) anzeigen
+                    </label>
                 </div>
 
                 <div class="bg-white border border-gray-200 rounded-xl p-5 space-y-3">

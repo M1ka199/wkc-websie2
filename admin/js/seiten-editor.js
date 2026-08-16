@@ -176,6 +176,7 @@ function setBlockCheckboxes(blocks) {
     document.getElementById('blockNews').checked = !!cfg.newsEnabled;
     document.getElementById('blockEvents').checked = !!cfg.eventsEnabled;
     document.getElementById('blockGallery').checked = !!cfg.galleryPreviewEnabled;
+    document.getElementById('pageTitleAreaEnabled').checked = cfg.titleAreaEnabled !== false;
     setSliderItems(Array.isArray(cfg.sliderItems) ? cfg.sliderItems : []);
 }
 
@@ -193,6 +194,7 @@ function collectPayload() {
     payload.append('og_image', document.getElementById('pageOgImage').value.trim());
     payload.append('noindex', document.getElementById('pageNoindex').checked ? '1' : '0');
     payload.append('nofollow', document.getElementById('pageNofollow').checked ? '1' : '0');
+    payload.append('title_area_enabled', document.getElementById('pageTitleAreaEnabled').checked ? '1' : '0');
     payload.append('hero_enabled', document.getElementById('blockHero').checked ? '1' : '0');
     payload.append('slider_enabled', document.getElementById('blockSlider').checked ? '1' : '0');
     payload.append('news_enabled', document.getElementById('blockNews').checked ? '1' : '0');
@@ -240,6 +242,7 @@ async function loadPage() {
     document.getElementById('pageNoindex').checked = Number(p.noindex || 0) === 1;
     document.getElementById('pageNofollow').checked = Number(p.nofollow || 0) === 1;
     document.getElementById('pageEditor').innerHTML = p.content_html || '<p><br></p>';
+    document.getElementById('pageTitleAreaEnabled').checked = true;
 
     let blocks = {};
     try {

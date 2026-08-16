@@ -82,6 +82,9 @@ function parseRecipients(string $raw): array {
 
 function decodeFieldOptions(string $type, array $field): array {
     $options = [];
+    $layoutWidth = strtolower(trim((string) ($field['layoutWidth'] ?? 'full')));
+    $options['layoutWidth'] = in_array($layoutWidth, ['full', 'half'], true) ? $layoutWidth : 'full';
+
     if ($type === 'select') {
         $rawOptions = $field['selectOptions'] ?? [];
         if (is_string($rawOptions)) {
@@ -162,6 +165,11 @@ function decodeAndValidateFields(string $fieldsJson): array {
             jsonResponse(['error' => 'Bitte hinterlegen Sie ein Label/Titel für Feld ' . ($idx + 1) . '.'], 400);
         }
 
+        $options = decodeFieldOptions($type, $field);
+        if (in_array($type, ['heading', 'divider'], true)) {
+            $options['layoutWidth'] = 'full';
+        }
+
         $result[] = [
             'type' => $type,
             'name' => $name,
@@ -169,7 +177,7 @@ function decodeAndValidateFields(string $fieldsJson): array {
             'placeholder' => $placeholder,
             'helpText' => $helpText,
             'required' => $required,
-            'options' => decodeFieldOptions($type, $field),
+            'options' => $options,
             'sortOrder' => $idx,
         ];
     }
@@ -754,6 +762,7 @@ if ($method === 'GET' && $action === 'detail') {
             'placeholder' => (string) ($field['placeholder'] ?? ''),
             'helpText' => (string) ($field['help_text'] ?? ''),
             'required' => (int) ($field['is_required'] ?? 0) === 1,
+            'layoutWidth' => (($options['layoutWidth'] ?? 'full') === 'half') ? 'half' : 'full',
             'selectOptions' => implode("\n", is_array($options['values'] ?? null) ? $options['values'] : []),
             'checkboxText' => (string) ($options['checkboxText'] ?? ''),
             'accept' => (string) ($options['accept'] ?? ''),

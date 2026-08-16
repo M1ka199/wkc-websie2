@@ -760,6 +760,7 @@ $showSlider = normalizeBool($blocks['sliderEnabled'] ?? true, true);
 $showNews = normalizeBool($blocks['newsEnabled'] ?? $homepageSettings['newsEnabled'] ?? true, true);
 $showEvents = normalizeBool($blocks['eventsEnabled'] ?? $homepageSettings['eventsEnabled'] ?? true, true);
 $showGallery = normalizeBool($blocks['galleryPreviewEnabled'] ?? $homepageSettings['galleryPreviewEnabled'] ?? true, true);
+$showTitleArea = normalizeBool($blocks['titleAreaEnabled'] ?? true, true);
 $showGoals = false;
 $sliderItems = [];
 if (isset($blocks['sliderItems']) && is_array($blocks['sliderItems'])) {
@@ -921,8 +922,10 @@ $head = renderSeoHead($title, $description, $canonical, $noindex, $nofollow, $og
             </main>
     <?php else: ?>
         <main class="pt-24" style="max-width: 1100px; margin: 0 auto; padding: 3rem 1rem 5rem;">
-            <p style="margin:0 0 .8rem; color:#6b7280;"><a href="/" style="color:inherit;">Startseite</a> / <?= h((string) $page['title']) ?></p>
-            <h1 style="font-size: clamp(1.8rem, 2.4vw, 2.4rem); margin-bottom: 1rem;"><?= h((string) $page['title']) ?></h1>
+            <?php if ($showTitleArea): ?>
+                <p style="margin:0 0 .8rem; color:#6b7280;"><a href="/" style="color:inherit;">Startseite</a> / <?= h((string) $page['title']) ?></p>
+                <h1 style="font-size: clamp(1.8rem, 2.4vw, 2.4rem); margin-bottom: 1rem;"><?= h((string) $page['title']) ?></h1>
+            <?php endif; ?>
             <article class="prose max-w-none" style="line-height: 1.8;"><?= $content ?></article>
         </main>
     <?php endif; ?>
@@ -954,4 +957,3 @@ $head = renderSeoHead($title, $description, $canonical, $noindex, $nofollow, $og
     <?php endif; ?>
 </body>
 </html>
-

@@ -419,6 +419,7 @@ async function loadGlobalSettings() {
         setInputValue('smtpPass', smtp.pass, '');
         setInputValue('smtpFrom', smtp.from, '');
         setInputValue('smtpFromName', smtp.from_name, '');
+        setInputValue('smtpContactRecipient', smtp.contact_recipient, '');
         setInputValue('smtpSecure', smtp.secure, 'tls');
 
         const features = settings.features || {};
@@ -487,6 +488,7 @@ if (globalSettingsForm) {
                     pass: document.getElementById('smtpPass').value,
                     from: document.getElementById('smtpFrom').value.trim(),
                     from_name: document.getElementById('smtpFromName').value.trim(),
+                    contact_recipient: document.getElementById('smtpContactRecipient').value.trim(),
                     secure: document.getElementById('smtpSecure').value || 'tls',
                 },
                 features: {

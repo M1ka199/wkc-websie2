@@ -35,6 +35,11 @@ if ($method !== 'POST') {
 $settings = getAppSettings();
 $formsCfg = $settings['forms'] ?? [];
 $integrationsCfg = $settings['integrations'] ?? [];
+$smtpCfg = $settings['smtp'] ?? [];
+$contactRecipient = trim((string) ($smtpCfg['contact_recipient'] ?? ''));
+if ($contactRecipient === '') {
+    $contactRecipient = trim((string) CONTACT_RECIPIENT);
+}
 
 function verifyTurnstileToken(string $secret, string $token): bool {
     if ($secret === '' || $token === '') return false;
@@ -158,21 +163,21 @@ $notificationSent = false;
 $confirmationSent = false;
 $mailError = mailConfigurationError();
 try {
-    if ($mailError === null && CONTACT_RECIPIENT !== '') {
+    if ($mailError === null && $contactRecipient !== '') {
         if ($type === 'membership') {
             $html = emailMembershipNotification($name, $email, $phone, $membershipMotivation ?: $message);
         } else {
             $html = emailContactNotification($name, $email, $subject, $message, $isAnonymous);
         }
         $notificationSent = sendMail(
-            CONTACT_RECIPIENT,
+            $contactRecipient,
             ($type === 'membership' ? '[Beitritt] ' : '[Kontakt] ') . $subject,
             $html,
             (!$isAnonymous && $email) ? $email : null,
             $name
         );
     } elseif ($mailError === null) {
-        $mailError = 'E-Mail-Versand ist nicht konfiguriert. CONTACT_RECIPIENT fehlt.';
+        $mailError = 'E-Mail-Versand ist nicht konfiguriert. Es fehlt ein Kontakt-Empfänger in den SMTP-Einstellungen.';
     }
 
     // A confirmation is useful only after the notification reached the organization.

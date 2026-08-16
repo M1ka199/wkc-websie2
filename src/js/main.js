@@ -381,14 +381,18 @@ function renderDynamicForm(container, form, fields, index) {
         <section class="wkc-form-shell rounded-3xl border border-gray-200 bg-white p-6 md:p-10 shadow-sm">
             <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900">${title}</h3>
             ${description ? `<p class="mt-3 text-sm md:text-base text-gray-600 leading-relaxed">${description}</p>` : ''}
-            <form class="mt-8 space-y-5 wkc-dynamic-form" data-form-slug="${escapeDynamicValue(form.slug || '')}" enctype="multipart/form-data">
+            <form class="mt-8 wkc-dynamic-form" data-form-slug="${escapeDynamicValue(form.slug || '')}" enctype="multipart/form-data">
                 <input type="text" name="website" value="" autocomplete="off" tabindex="-1" aria-hidden="true" class="hidden">
                 <div class="dynamic-form-message hidden rounded-xl p-4 text-sm font-medium"></div>
-                ${fieldHtml}
-                <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm md:text-base font-bold text-white hover:bg-primary-dark transition-colors shadow-sm shadow-primary/20">
-                    <span class="material-symbols-outlined text-base">send</span>
-                    ${submitLabel}
-                </button>
+                <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5 wkc-dynamic-form-fields">
+                    ${fieldHtml}
+                </div>
+                <div class="mt-6">
+                    <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm md:text-base font-bold text-white hover:bg-primary-dark transition-colors shadow-sm shadow-primary/20">
+                        <span class="material-symbols-outlined text-base">send</span>
+                        ${submitLabel}
+                    </button>
+                </div>
             </form>
         </section>
     `;
@@ -409,18 +413,20 @@ function renderDynamicFormField(field, index) {
     const requiredAttr = required ? 'required' : '';
     const requiredMark = required ? ' <span class="text-red-500">*</span>' : '';
     const baseInputClass = 'w-full rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/20';
+    const layoutWidth = String(field.options?.layoutWidth || 'full').toLowerCase() === 'half' ? 'half' : 'full';
+    const fieldSpanClass = layoutWidth === 'half' ? 'md:col-span-1' : 'md:col-span-2';
 
     if (type === 'divider') {
-        return '<hr class="my-2 border-gray-200">';
+        return '<div class="md:col-span-2"><hr class="my-2 border-gray-200"></div>';
     }
 
     if (type === 'heading') {
-        return `<h4 class="pt-1 text-lg font-bold text-gray-900">${label || 'Überschrift'}</h4>`;
+        return `<div class="md:col-span-2"><h4 class="pt-1 text-lg font-bold text-gray-900">${label || 'Überschrift'}</h4></div>`;
     }
 
     if (type === 'textarea') {
         return `
-            <div>
+            <div class="${fieldSpanClass}">
                 <label class="mb-1 block text-sm font-bold text-gray-700" for="dyn-${name}-${index}">${label}${requiredMark}</label>
                 <textarea id="dyn-${name}-${index}" name="${name}" rows="4" class="${baseInputClass}" placeholder="${placeholder}" ${requiredAttr}></textarea>
                 ${helpText ? `<p class="mt-1 text-xs text-gray-500">${helpText}</p>` : ''}
@@ -441,7 +447,7 @@ function renderDynamicFormField(field, index) {
         }).join('');
 
         return `
-            <div>
+            <div class="${fieldSpanClass}">
                 <label class="mb-1 block text-sm font-bold text-gray-700" for="dyn-${name}-${index}">${label}${requiredMark}</label>
                 <select id="dyn-${name}-${index}" name="${name}" class="${baseInputClass}" ${requiredAttr}>
                     <option value="">Bitte wählen</option>
@@ -455,7 +461,7 @@ function renderDynamicFormField(field, index) {
     if (type === 'checkbox') {
         const checkboxText = escapeDynamicValue(field.options?.checkboxText || 'Ich bestätige diese Angabe.');
         return `
-            <div>
+            <div class="${fieldSpanClass}">
                 <p class="mb-1 text-sm font-bold text-gray-700">${label}${requiredMark}</p>
                 <label class="inline-flex items-start gap-3 text-sm text-gray-700">
                     <input type="checkbox" name="${name}" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" ${requiredAttr}>
@@ -470,7 +476,7 @@ function renderDynamicFormField(field, index) {
         const accept = escapeDynamicValue(field.options?.accept || '.pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png,.webp,.txt,.csv,.zip');
         const maxSizeMb = Number(field.options?.maxSizeMb || 10);
         return `
-            <div>
+            <div class="${fieldSpanClass}">
                 <label class="mb-1 block text-sm font-bold text-gray-700" for="dyn-${name}-${index}">${label}${requiredMark}</label>
                 <input id="dyn-${name}-${index}" name="${name}" type="file" class="${baseInputClass}" accept="${accept}" ${requiredAttr}>
                 <p class="mt-1 text-xs text-gray-500">${helpText || `Maximal ${maxSizeMb} MB.`}</p>
@@ -480,7 +486,7 @@ function renderDynamicFormField(field, index) {
 
     if (type === 'signature') {
         return `
-            <div class="wkc-signature-field" data-signature-field="${name}">
+            <div class="wkc-signature-field ${fieldSpanClass}" data-signature-field="${name}">
                 <label class="mb-1 block text-sm font-bold text-gray-700">${label}${requiredMark}</label>
                 <div class="overflow-hidden rounded-xl border border-gray-200 bg-white">
                     <canvas class="wkc-signature-canvas block w-full" height="180"></canvas>
@@ -496,7 +502,7 @@ function renderDynamicFormField(field, index) {
 
     const inputType = ['email', 'tel'].includes(type) ? type : 'text';
     return `
-        <div>
+        <div class="${fieldSpanClass}">
             <label class="mb-1 block text-sm font-bold text-gray-700" for="dyn-${name}-${index}">${label}${requiredMark}</label>
             <input id="dyn-${name}-${index}" name="${name}" type="${inputType}" class="${baseInputClass}" placeholder="${placeholder}" ${requiredAttr}>
             ${helpText ? `<p class="mt-1 text-xs text-gray-500">${helpText}</p>` : ''}
@@ -1070,6 +1076,5 @@ function loadGoalsDetail() {
 
     function esc(t) { const d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML; }
 }
-
 
 

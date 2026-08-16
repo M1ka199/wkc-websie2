@@ -53,6 +53,7 @@ function createField(type = 'text') {
         placeholder: '',
         helpText: '',
         required: false,
+        layoutWidth: 'full',
         selectOptions: '',
         checkboxText: '',
         accept: '',
@@ -80,6 +81,7 @@ function renderFields() {
 
     list.innerHTML = formBuilderState.fields.map((field, index) => {
         const type = field.type || 'text';
+        const layoutWidth = field.layoutWidth === 'half' ? 'half' : 'full';
         const isStructural = type === 'heading' || type === 'divider';
         const isSelect = type === 'select';
         const isCheckbox = type === 'checkbox';
@@ -125,6 +127,16 @@ function renderFields() {
                     <div class="${supportsPlaceholder ? '' : 'hidden'}">
                         <label class="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1">Placeholder</label>
                         <input data-field-input="${index}" data-key="placeholder" type="text" class="w-full rounded-lg border-gray-300 text-sm" value="${formEscape(field.placeholder)}">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 ${isStructural ? 'hidden' : ''}">
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1">Feldbreite</label>
+                        <select data-field-input="${index}" data-key="layoutWidth" class="w-full rounded-lg border-gray-300 text-sm">
+                            <option value="full" ${layoutWidth === 'full' ? 'selected' : ''}>Volle Breite</option>
+                            <option value="half" ${layoutWidth === 'half' ? 'selected' : ''}>Halbe Breite</option>
+                        </select>
                     </div>
                 </div>
 
@@ -218,6 +230,7 @@ function mapFieldFromApi(field) {
         placeholder: field.placeholder || '',
         helpText: field.helpText || '',
         required: !!field.required,
+        layoutWidth: field.layoutWidth === 'half' ? 'half' : 'full',
         selectOptions: field.selectOptions || '',
         checkboxText: field.checkboxText || '',
         accept: field.accept || '',
@@ -326,6 +339,8 @@ function handleFieldInput(eventTarget) {
     const field = formBuilderState.fields[index];
     if (key === 'required') {
         field.required = !!eventTarget.checked;
+    } else if (key === 'layoutWidth') {
+        field.layoutWidth = eventTarget.value === 'half' ? 'half' : 'full';
     } else if (key === 'maxSizeMb') {
         field.maxSizeMb = Math.max(1, Math.min(20, Number(eventTarget.value || 10)));
     } else {
@@ -339,6 +354,7 @@ function handleFieldInput(eventTarget) {
         if (field.type === 'heading' || field.type === 'divider') {
             field.required = false;
             field.name = '';
+            field.layoutWidth = 'full';
         } else if (!field.name) {
             field.name = fieldNameFromLabel(field.label, index);
         }
