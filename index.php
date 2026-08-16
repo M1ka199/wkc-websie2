@@ -815,17 +815,17 @@ $head = renderSeoHead($title, $description, $canonical, $noindex, $nofollow, $og
         <main class="pt-20">
             <?php if ($showHero): ?>
                 <section id="home-hero" data-home-hero class="relative min-h-[76vh] flex items-center justify-center overflow-hidden">
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=2200&h=1400&fit=crop')] bg-cover bg-center"></div>
+                    <div class="absolute inset-0 bg-[url('/src/main_wkc.jpg')] bg-cover bg-center"></div>
                     <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/65"></div>
                     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
                         <p class="text-white/80 font-bold uppercase tracking-[0.22em] text-xs sm:text-sm">Wulftener Karneval Club e.V.</p>
                         <h1 class="mt-5 text-white text-4xl sm:text-5xl md:text-6xl font-black leading-tight">
                             <?= h((string) ($branding['siteName'] ?? 'Wulftener Karneval Club e.V.')) ?>
                         </h1>
-                        <p class="mt-4 text-white/90 text-sm sm:text-base font-semibold tracking-wide">Gegründet 2021</p>
+                        <p class="mt-4 text-white/90 text-sm sm:text-base font-semibold tracking-wide">Gegründet 1992</p>
                         <div class="mt-10">
                             <a href="/ueber-uns" class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm sm:text-base font-bold text-primary shadow-xl hover:shadow-2xl transition-all hover:-translate-y-0.5">
-                                Über uns
+                                Unsere Geschichte
                                 <span class="material-symbols-outlined text-base">arrow_forward</span>
                             </a>
                         </div>
