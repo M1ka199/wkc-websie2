@@ -816,7 +816,7 @@ $head = renderSeoHead($title, $description, $canonical, $noindex, $nofollow, $og
             <?php if ($showHero): ?>
                 <section id="home-hero" data-home-hero class="relative min-h-[76vh] flex items-center justify-center overflow-hidden">
                     <div class="absolute inset-0 bg-[url('/src/main_wkc.jpg')] bg-cover bg-center"></div>
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/65"></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/65 to-black/80"></div>
                     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
                         <p class="text-white/80 font-bold uppercase tracking-[0.22em] text-xs sm:text-sm">Wulftener Karneval Club e.V.</p>
                         <h1 class="mt-5 text-white text-4xl sm:text-5xl md:text-6xl font-black leading-tight">
