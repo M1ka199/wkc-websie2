@@ -98,4 +98,10 @@ async function loadPages() {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadPages();
+
+    document.getElementById('logoutBtn')?.addEventListener('click', async (e) => {
+        e.preventDefault();
+        await fetch('../api/auth.php?action=logout');
+        window.location.href = 'index.php';
+    });
 });

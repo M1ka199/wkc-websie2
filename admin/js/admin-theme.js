@@ -107,10 +107,10 @@
     }
 
     function applyAdminBrandingLogos(branding) {
-        const logoHeader = String(branding?.logoHeader || '/src/wkc-logo.svg').trim();
-        const logoFooter = String(branding?.logoFooter || '/src/wkc-logo-white.svg').trim();
+        const logoHeader = String(branding?.logoHeader || '../src/wkc-logo.svg').trim();
+        const logoFooter = String(branding?.logoFooter || '../src/wkc-logo-white.svg').trim();
 
-        document.querySelectorAll('[data-admin-brand-logo="header"], [data-brand-logo="header"]').forEach((el) => {
+        document.querySelectorAll('[data-admin-brand-logo="header"], [data-brand-logo="header"], .sidebar-logo-link img').forEach((el) => {
             if (el.tagName === 'IMG' && logoHeader) {
                 el.setAttribute('src', logoHeader);
             }
