@@ -4,8 +4,6 @@
  */
 (function initAdminTheme() {
     const GOOGLE_FONT_BASE = 'https://fonts.googleapis.com/css2?family=';
-    const LOTTIE_PLAYER_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js';
-    const LOTTIE_LOGO_JSON = '/src/wkc-logo.json';
 
     function slugifyFont(fontName) {
         return String(fontName || '').trim().replace(/\s+/g, '+');
@@ -87,68 +85,20 @@
         }
     }
 
-    function ensureLottiePlayerLoaded() {
-        if (window.lottie) return Promise.resolve(window.lottie);
+    function applyAdminBrandingLogos(branding) {
+        const logoHeader = String(branding?.logoHeader || '/src/wkc-logo.svg').trim();
+        const logoFooter = String(branding?.logoFooter || '/src/wkc-logo-white.svg').trim();
 
-        const existing = document.getElementById('wkc-admin-lottie-player');
-        if (existing) {
-            return new Promise((resolve, reject) => {
-                existing.addEventListener('load', () => resolve(window.lottie), { once: true });
-                existing.addEventListener('error', reject, { once: true });
-            });
-        }
-
-        return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.id = 'wkc-admin-lottie-player';
-            script.src = LOTTIE_PLAYER_SRC;
-            script.async = true;
-            script.onload = () => resolve(window.lottie);
-            script.onerror = reject;
-            document.head.appendChild(script);
+        document.querySelectorAll('[data-admin-brand-logo="header"], [data-brand-logo="header"]').forEach((el) => {
+            if (el.tagName === 'IMG' && logoHeader) {
+                el.setAttribute('src', logoHeader);
+            }
         });
-    }
-
-    function replaceLogoImageWithLottie(img) {
-        if (!img || img.dataset.lottieApplied === '1') return;
-        const width = img.clientWidth || img.naturalWidth || Math.max(parseInt(img.getAttribute('width') || '0', 10), 140);
-        const height = img.clientHeight || img.naturalHeight || Math.max(parseInt(img.getAttribute('height') || '0', 10), 40);
-
-        const lottieHost = document.createElement('span');
-        lottieHost.className = 'inline-flex items-center';
-        lottieHost.style.width = `${width}px`;
-        lottieHost.style.height = `${height}px`;
-        lottieHost.style.maxWidth = '100%';
-        lottieHost.setAttribute('aria-label', img.getAttribute('alt') || 'Logo');
-        lottieHost.setAttribute('role', 'img');
-
-        img.style.display = 'none';
-        img.dataset.lottieApplied = '1';
-        img.insertAdjacentElement('afterend', lottieHost);
-
-        if (!window.lottie) return;
-        window.lottie.loadAnimation({
-            container: lottieHost,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: LOTTIE_LOGO_JSON,
-            rendererSettings: {
-                preserveAspectRatio: 'xMidYMid meet',
-            },
+        document.querySelectorAll('[data-brand-logo="footer"]').forEach((el) => {
+            if (el.tagName === 'IMG' && logoFooter) {
+                el.setAttribute('src', logoFooter);
+            }
         });
-    }
-
-    async function applyLottieAdminLogos() {
-        const logos = Array.from(document.querySelectorAll('[data-lottie-logo], img[src*="wkc-logo"], [data-admin-brand-logo="header"]'));
-        if (!logos.length) return;
-
-        try {
-            await ensureLottiePlayerLoaded();
-            logos.forEach(replaceLogoImageWithLottie);
-        } catch (err) {
-            console.warn('Admin lottie logo could not be initialized:', err);
-        }
     }
 
     function applyBranding(branding) {
@@ -167,13 +117,11 @@
             }
             favicon.href = branding.favicon;
         }
-
-        applyLottieAdminLogos();
+        applyAdminBrandingLogos(branding);
     }
 
     async function loadAdminSettings() {
         injectThemeCssOnce();
-        applyLottieAdminLogos();
         try {
             const res = await fetch('../api/settings.php?scope=admin', { credentials: 'include' });
             if (!res.ok) return;

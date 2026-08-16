@@ -47,7 +47,7 @@ if (!$canEditContent) {
     <aside id="sidebar" class="w-72 bg-white border-r border-gray-200 flex flex-col fixed h-full z-20 transition-all duration-300 -translate-x-full lg:translate-x-0">
         <div class="p-6">
             <div class="flex items-center justify-between mb-6">
-                <a href="dashboard.php"><img src="../src/wkc-logo.json" alt="Logo" class="h-auto w-full max-w-[10rem]"></a>
+                <a href="dashboard.php"><img src="../src/wkc-logo.svg" alt="Logo" class="h-auto w-full max-w-[10rem]"></a>
             </div>
             <nav class="space-y-1">
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="dashboard.php"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></a>

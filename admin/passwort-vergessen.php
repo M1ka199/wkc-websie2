@@ -51,7 +51,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="w-full max-w-[440px] bg-white rounded-xl shadow-xl shadow-primary/5 overflow-hidden border border-primary/10">
             <div class="pt-10 pb-6 px-8 text-center">
                 <div class="flex justify-center mb-6">
-                    <img src="../src/wkc-logo.json" alt="WKC Logo" class="h-16" onerror="this.style.display='none'">
+                    <img src="../src/wkc-logo.svg" alt="WKC Logo" class="h-16" onerror="this.style.display='none'">
                 </div>
                 <h1 class="text-2xl font-black text-gray-900 tracking-tight">Passwort vergessen?</h1>
                 <p class="text-sm text-gray-500 mt-2 font-medium">Geben Sie Ihren Benutzernamen oder Ihre E-Mail ein.</p>

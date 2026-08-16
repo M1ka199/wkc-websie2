@@ -3,8 +3,6 @@
  */
 (function initSiteConfig() {
     const GOOGLE_FONT_BASE = 'https://fonts.googleapis.com/css2?family=';
-    const LOTTIE_PLAYER_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js';
-    const LOTTIE_LOGO_JSON = '/src/wkc-logo.json';
 
     function slugifyFont(fontName) {
         return String(fontName || '').trim().replace(/\s+/g, '+');
@@ -59,94 +57,20 @@
         }
     }
 
-    function ensureLottiePlayerLoaded() {
-        if (window.lottie) return Promise.resolve(window.lottie);
+    function applyBrandLogos(branding) {
+        const headerLogo = String(branding?.logoHeader || '/src/wkc-logo.svg').trim();
+        const footerLogo = String(branding?.logoFooter || '/src/wkc-logo-white.svg').trim();
 
-        const existing = document.getElementById('wkc-lottie-player');
-        if (existing) {
-            return new Promise((resolve, reject) => {
-                existing.addEventListener('load', () => resolve(window.lottie), { once: true });
-                existing.addEventListener('error', reject, { once: true });
-            });
-        }
-
-        return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.id = 'wkc-lottie-player';
-            script.src = LOTTIE_PLAYER_SRC;
-            script.async = true;
-            script.onload = () => resolve(window.lottie);
-            script.onerror = reject;
-            document.head.appendChild(script);
+        document.querySelectorAll('[data-brand-logo="header"]').forEach((el) => {
+            if (el.tagName === 'IMG' && headerLogo) {
+                el.setAttribute('src', headerLogo);
+            }
         });
-    }
-
-    function buildLottieHostForImage(img) {
-        const width = img.clientWidth || img.naturalWidth || Math.max(parseInt(img.getAttribute('width') || '0', 10), 140);
-        const height = img.clientHeight || img.naturalHeight || Math.max(parseInt(img.getAttribute('height') || '0', 10), 40);
-
-        const lottieHost = document.createElement('span');
-        lottieHost.className = 'inline-flex items-center';
-        lottieHost.style.width = `${width}px`;
-        lottieHost.style.height = `${height}px`;
-        lottieHost.style.maxWidth = '100%';
-        lottieHost.setAttribute('aria-label', img.getAttribute('alt') || 'Logo');
-        lottieHost.setAttribute('role', 'img');
-
-        img.style.display = 'none';
-        img.dataset.lottieApplied = '1';
-        img.insertAdjacentElement('afterend', lottieHost);
-        return lottieHost;
-    }
-
-    function resolveLottieHost(node) {
-        if (!node) return null;
-        if (node.dataset.lottieApplied === '1') return null;
-
-        if (node.tagName === 'IMG') {
-            return buildLottieHostForImage(node);
-        }
-
-        node.dataset.lottieApplied = '1';
-        node.classList.add('inline-flex', 'items-center');
-        if (!node.style.width) node.style.width = 'min(11rem, 100%)';
-        if (!node.style.height) node.style.height = '3rem';
-        node.style.maxWidth = '100%';
-        node.setAttribute('role', 'img');
-        node.setAttribute('aria-label', node.getAttribute('aria-label') || 'Logo');
-        return node;
-    }
-
-    function startLottieOnHost(host) {
-        if (!host || !window.lottie || host.dataset.lottieAnimationReady === '1') return;
-        host.dataset.lottieAnimationReady = '1';
-        window.lottie.loadAnimation({
-            container: host,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: LOTTIE_LOGO_JSON,
-            rendererSettings: {
-                preserveAspectRatio: 'xMidYMid meet',
-            },
+        document.querySelectorAll('[data-brand-logo="footer"]').forEach((el) => {
+            if (el.tagName === 'IMG' && footerLogo) {
+                el.setAttribute('src', footerLogo);
+            }
         });
-    }
-
-    async function applyLottieHeaderLogo() {
-        const logoNodes = Array.from(document.querySelectorAll(
-            '[data-lottie-logo], [data-brand-logo="header"], [data-brand-logo="footer"], img[src*="wkc-logo"]'
-        ));
-        if (!logoNodes.length) return;
-
-        try {
-            await ensureLottiePlayerLoaded();
-            logoNodes.forEach((node) => {
-                const host = resolveLottieHost(node);
-                startLottieOnHost(host);
-            });
-        } catch (err) {
-            console.warn('Lottie logo could not be initialized:', err);
-        }
     }
 
     function applyBranding(branding) {
@@ -168,7 +92,7 @@
             favicon.href = String(branding.favicon);
         }
 
-        applyLottieHeaderLogo();
+        applyBrandLogos(branding);
     }
 
     function applyIntegrations(integrations) {
@@ -297,7 +221,6 @@
     }
 
     async function loadSettings() {
-        applyLottieHeaderLogo();
         try {
             const res = await fetch('/api/settings.php');
             const data = await res.json();

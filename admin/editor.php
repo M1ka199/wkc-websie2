@@ -87,7 +87,7 @@ $isEditing = $articleId > 0;
             </a>
             <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
             <a href="dashboard.php" class="flex items-center gap-2">
-                <img src="../src/wkc-logo.json" alt="WKC Logo" class="h-8" onerror="this.style.display='none'">
+                <img src="../src/wkc-logo.svg" alt="WKC Logo" class="h-8" onerror="this.style.display='none'">
             </a>
         </div>
         <div class="flex items-center gap-3">
@@ -394,5 +394,4 @@ $isEditing = $articleId > 0;
     <script src="js/editor.js"></script>
 </body>
 </html>
-
 

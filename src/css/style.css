@@ -429,6 +429,35 @@ html {
 }
 
 /* ================================
+   Garden page
+   ================================ */
+
+.garden-demo {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1.25rem;
+    padding: clamp(1rem, 2vw, 2rem);
+    box-shadow: 0 16px 40px -28px rgba(17, 24, 39, 0.35);
+}
+
+.garden-demo-title {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    color: #111827;
+}
+
+.garden-demo-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    max-height: 560px;
+}
+
+/* ================================
    Responsive adjustments
    ================================ 
 

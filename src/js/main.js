@@ -29,11 +29,6 @@ function articleUrl(article) {
     return `/artikel/${encodeURIComponent(String(slug))}`;
 }
 
-function memberUrl(member) {
-    const slug = member?.username || member?.id || '';
-    return `/vorstand/${encodeURIComponent(String(slug))}`;
-}
-
 /* ================================
    Navigation – scroll behavior
    ================================ */
@@ -683,18 +678,15 @@ function loadVorstand() {
                 const delay = delays[i % delays.length];
 
                 return `
-                    <a href="${memberUrl(m)}" class="group flex flex-col items-center scroll-animate ${delay}">
+                    <div class="group flex flex-col items-center scroll-animate ${delay}">
                         <div class="relative mb-5">
                             <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-gray-100 shadow-lg group-hover:border-primary transition-all duration-300 group-hover:shadow-primary/20">
                                 ${img}
                             </div>
-                            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1 whitespace-nowrap">
-                                Profil ansehen
-                            </div>
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">${esc(m.display_name)}</h3>
                         <p class="text-sm text-gray-500 font-medium">${esc(m.position || '')}</p>
-                    </a>`;
+                    </div>`;
             }).join('');
 
             // Re-init scroll animations for new elements
@@ -1076,5 +1068,4 @@ function loadGoalsDetail() {
 
     function esc(t) { const d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML; }
 }
-
 
