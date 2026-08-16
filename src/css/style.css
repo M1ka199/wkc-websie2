@@ -38,6 +38,17 @@ a:hover {
     color: var(--site-primary);
 }
 
+.brand-wordmark {
+    margin-left: 0.65rem;
+    color: var(--site-primary);
+    font-family: "Forte", "Luckiest Guy", "Public Sans", sans-serif;
+    font-size: clamp(1.15rem, 1.35vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
 /* CMS-aware utility overrides so Tailwind utility classes follow dynamic settings */
 .text-primary { color: var(--site-primary) !important; }
 .bg-primary { background-color: var(--site-primary) !important; }
@@ -433,28 +444,72 @@ html {
    ================================ */
 
 .garden-demo {
+    position: relative;
+    overflow: hidden;
     max-width: 960px;
     margin: 0 auto;
-    background: #ffffff;
+    background: linear-gradient(145deg, #ffffff 0%, #f7f5ff 100%);
     border: 1px solid #e5e7eb;
     border-radius: 1.25rem;
-    padding: clamp(1rem, 2vw, 2rem);
-    box-shadow: 0 16px 40px -28px rgba(17, 24, 39, 0.35);
+    padding: clamp(1rem, 2vw, 2.1rem);
+    box-shadow: 0 24px 56px -36px rgba(17, 24, 39, 0.45);
+}
+
+.garden-demo::before {
+    content: "";
+    position: absolute;
+    top: -130px;
+    right: -110px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--site-primary) 22%, #ffffff) 0%, rgba(255, 255, 255, 0) 68%);
+    pointer-events: none;
+}
+
+.garden-demo-kicker {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--site-primary) 75%, #111827);
+    font-weight: 800;
 }
 
 .garden-demo-title {
-    margin: 0 0 1rem;
+    margin: 0.45rem 0 1rem;
     font-size: clamp(2rem, 4.5vw, 3rem);
     color: #111827;
+}
+
+.garden-demo-figure {
+    position: relative;
+    margin: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 20px 40px -25px rgba(17, 24, 39, 0.6);
 }
 
 .garden-demo-image {
     display: block;
     width: 100%;
-    height: auto;
-    border-radius: 1rem;
+    height: clamp(300px, 52vw, 560px);
     object-fit: cover;
-    max-height: 560px;
+    filter: saturate(1.08) contrast(1.04);
+    transform: scale(1.01);
+}
+
+.garden-demo-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 1rem 1.15rem;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0) 0%, rgba(17, 24, 39, 0.7) 100%);
 }
 
 /* ================================
