@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Member Management (Admin)
+ * WKC – Member Management (Admin)
  * List, create, edit, deactivate board members / users.
  */
 require_once __DIR__ . '/../api/config.php';
@@ -36,7 +36,7 @@ $user = $_SESSION;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitglieder verwalten â€“ WKC</title>
+    <title>Mitglieder verwalten – WKC</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -96,9 +96,9 @@ $user = $_SESSION;
                         <span class="sidebar-label">Dashboard</span>
                     </a>
                     <?php if ($canEditContent): ?>
-                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="BeitrÃ¤ge">
+                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="Beiträge">
                         <span class="material-symbols-outlined">article</span>
-                        <span class="sidebar-label">BeitrÃ¤ge</span>
+                        <span class="sidebar-label">Beiträge</span>
                     </a>
                     <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="seiten.php" title="Seiten">
                         <span class="material-symbols-outlined">web</span>
@@ -265,19 +265,19 @@ $user = $_SESSION;
                 <div>
                     <label class="text-xs font-bold text-gray-900 uppercase tracking-wider block mb-1">E-Mail</label>
                     <input id="memberEmail" type="email" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2.5" placeholder="max@beispiel.de">
-                    <p class="text-xs text-gray-400 mt-1">FÃ¼r Einladungen und Passwort-ZurÃ¼cksetzung erforderlich.</p>
+                    <p class="text-xs text-gray-400 mt-1">Für Einladungen und Passwort-Zurücksetzung erforderlich.</p>
                 </div>
 
                 <div>
                     <label class="text-xs font-bold text-gray-900 uppercase tracking-wider block mb-1">Passwort <span id="pwHint" class="text-gray-400 normal-case font-normal">(min. 8 Zeichen)</span></label>
-                    <input id="memberPassword" type="password" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2.5" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+                    <input id="memberPassword" type="password" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2.5" placeholder="••••••••">
                 </div>
 
                 <!-- Invitation toggle (only for new members) -->
                 <div id="invitationToggle" class="flex items-center gap-3 p-4 bg-primary/5 rounded-xl border border-primary/10">
                     <input type="checkbox" id="memberSendInvitation" class="h-5 w-5 text-primary rounded border-gray-300 focus:ring-primary cursor-pointer">
                     <label for="memberSendInvitation" class="text-sm text-gray-700 cursor-pointer select-none">
-                        <span class="font-semibold text-gray-900">Einladung per E-Mail senden</span> â€“ Mitglied setzt Passwort selbst.
+                        <span class="font-semibold text-gray-900">Einladung per E-Mail senden</span> – Mitglied setzt Passwort selbst.
                     </label>
                 </div>
 
@@ -287,7 +287,7 @@ $user = $_SESSION;
                         <span class="material-symbols-outlined text-blue-500 mt-0.5">forward_to_inbox</span>
                         <div class="flex-1">
                             <p class="text-sm font-semibold text-gray-900">Passwort-Link senden</p>
-                            <p class="text-xs text-gray-500 mt-0.5">Sendet eine E-Mail mit einem Link zum Erstellen oder ZurÃ¼cksetzen des Passworts.</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Sendet eine E-Mail mit einem Link zum Erstellen oder Zurücksetzen des Passworts.</p>
                             <button type="button" id="btnSendPasswordLink" class="mt-3 px-4 py-2 rounded-lg border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all flex items-center gap-2">
                                 <span class="material-symbols-outlined text-lg">send</span>
                                 <span id="btnSendPasswordLinkLabel">Passwort-Link senden</span>
@@ -300,9 +300,9 @@ $user = $_SESSION;
                 <div>
                     <label class="text-xs font-bold text-gray-900 uppercase tracking-wider block mb-1">Benutzerrolle</label>
                     <select id="memberRole" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2.5">
-                        <option value="member">Mitglied â€“ Nur Dashboard mit Terminen & Downloads</option>
-                        <option value="editor">Redakteur â€“ Kann BeitrÃ¤ge verwalten</option>
-                        <option value="admin">Administrator â€“ Vollzugriff</option>
+                        <option value="member">Mitglied – Nur Dashboard mit Terminen & Downloads</option>
+                        <option value="editor">Redakteur – Kann Beiträge verwalten</option>
+                        <option value="admin">Administrator – Vollzugriff</option>
                     </select>
                     <p class="text-xs text-gray-400 mt-1">Bestimmt die Berechtigungen im Backend.</p>
                 </div>
@@ -310,7 +310,7 @@ $user = $_SESSION;
                 <div class="flex items-center gap-3 p-4 bg-bg-light rounded-xl">
                     <input type="checkbox" id="memberIsBoardMember" class="h-5 w-5 text-primary rounded border-gray-300 focus:ring-primary cursor-pointer">
                     <label for="memberIsBoardMember" class="text-sm text-gray-700 cursor-pointer select-none">
-                        <span class="font-semibold text-gray-900">Vorstandsmitglied</span> â€“ Wird auf der Startseite angezeigt.
+                        <span class="font-semibold text-gray-900">Vorstandsmitglied</span> – Wird auf der Startseite angezeigt.
                     </label>
                 </div>
 

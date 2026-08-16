@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ BeitrÃ¤ge verwalten (Admin)
+ * WKC – Beiträge verwalten (Admin)
  * Searchable article listing with status filters.
  */
 require_once __DIR__ . '/../api/config.php';
@@ -25,7 +25,7 @@ if (!$canEditContent) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeitrÃ¤ge â€“ WKC Backend</title>
+    <title>Beiträge – WKC Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -86,9 +86,9 @@ if (!$canEditContent) {
                         <span class="sidebar-label">Dashboard</span>
                     </a>
                     <?php if ($canEditContent): ?>
-                    <a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg transition-colors" href="beitraege.php" title="BeitrÃ¤ge">
+                    <a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg transition-colors" href="beitraege.php" title="Beiträge">
                         <span class="material-symbols-outlined">article</span>
-                        <span class="sidebar-label">BeitrÃ¤ge</span>
+                        <span class="sidebar-label">Beiträge</span>
                     </a>
                     <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="seiten.php" title="Seiten">
                         <span class="material-symbols-outlined">web</span>
@@ -156,7 +156,7 @@ if (!$canEditContent) {
                     <button onclick="toggleSidebar()" class="lg:hidden p-2 text-gray-500 hover:bg-bg-light rounded-lg">
                         <span class="material-symbols-outlined">menu</span>
                     </button>
-                    <h2 class="text-lg font-bold text-gray-900">BeitrÃ¤ge</h2>
+                    <h2 class="text-lg font-bold text-gray-900">Beiträge</h2>
                 </div>
                 <div class="flex items-center gap-3">
                     <a href="../index.html" target="_blank" class="p-2 text-gray-400 hover:text-primary transition-colors rounded-lg hover:bg-bg-light flex items-center gap-2" title="Webseite anzeigen">
@@ -171,7 +171,7 @@ if (!$canEditContent) {
                 <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                     <div class="relative w-full sm:w-80">
                         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-                        <input id="searchInput" class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm placeholder:text-gray-400" placeholder="BeitrÃ¤ge durchsuchen..." type="text">
+                        <input id="searchInput" class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm placeholder:text-gray-400" placeholder="Beiträge durchsuchen..." type="text">
                     </div>
                     <div class="flex items-center gap-3">
                         <div class="flex items-center gap-1 bg-bg-light rounded-lg p-1 text-sm">
@@ -179,10 +179,10 @@ if (!$canEditContent) {
                                 Alle <span class="text-xs opacity-60" id="countAll">0</span>
                             </button>
                             <button class="filter-tab px-3 py-1.5 rounded-md text-gray-500 transition-all" data-status="published">
-                                VerÃ¶ffentlicht <span class="text-xs opacity-60" id="countPublished">0</span>
+                                Veröffentlicht <span class="text-xs opacity-60" id="countPublished">0</span>
                             </button>
                             <button class="filter-tab px-3 py-1.5 rounded-md text-gray-500 transition-all" data-status="draft">
-                                EntwÃ¼rfe <span class="text-xs opacity-60" id="countDraft">0</span>
+                                Entwürfe <span class="text-xs opacity-60" id="countDraft">0</span>
                             </button>
                             <button class="filter-tab px-3 py-1.5 rounded-md text-gray-500 transition-all" data-status="archived">
                                 Archiv <span class="text-xs opacity-60" id="countArchived">0</span>
@@ -219,7 +219,7 @@ if (!$canEditContent) {
                     <div id="pagination" class="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-sm hidden">
                         <p class="text-gray-500"><span id="pagInfo"></span></p>
                         <div class="flex items-center gap-2">
-                            <button id="prevPage" class="px-3 py-1.5 rounded-lg border border-gray-200 text-gray-500 hover:bg-bg-light disabled:opacity-40 disabled:cursor-not-allowed">ZurÃ¼ck</button>
+                            <button id="prevPage" class="px-3 py-1.5 rounded-lg border border-gray-200 text-gray-500 hover:bg-bg-light disabled:opacity-40 disabled:cursor-not-allowed">Zurück</button>
                             <button id="nextPage" class="px-3 py-1.5 rounded-lg border border-gray-200 text-gray-500 hover:bg-bg-light disabled:opacity-40 disabled:cursor-not-allowed">Weiter</button>
                         </div>
                     </div>

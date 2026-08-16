@@ -29,7 +29,7 @@ $formId = (int) ($_GET['id'] ?? 0);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formular-Editor â€“ WKC Backend</title>
+    <title>Formular-Editor – WKC Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -82,9 +82,9 @@ $formId = (int) ($_GET['id'] ?? 0);
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="sidebar-label">Dashboard</span>
                     </a>
-                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="BeitrÃ¤ge">
+                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="Beiträge">
                         <span class="material-symbols-outlined">article</span>
-                        <span class="sidebar-label">BeitrÃ¤ge</span>
+                        <span class="sidebar-label">Beiträge</span>
                     </a>
                     <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="seiten.php" title="Seiten">
                         <span class="material-symbols-outlined">web</span>
@@ -154,7 +154,7 @@ $formId = (int) ($_GET['id'] ?? 0);
                     <h2 id="editorTitle" class="text-lg font-bold text-gray-900">Neues Formular</h2>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button id="deleteFormBtn" class="px-3 py-2 rounded-lg border border-red-300 text-red-600 text-sm font-bold hidden">LÃ¶schen</button>
+                    <button id="deleteFormBtn" class="px-3 py-2 rounded-lg border border-red-300 text-red-600 text-sm font-bold hidden">Löschen</button>
                     <button id="saveFormBtn" class="bg-primary text-white px-4 py-2.5 rounded-lg text-sm font-bold">Speichern</button>
                 </div>
             </header>
@@ -177,7 +177,7 @@ $formId = (int) ($_GET['id'] ?? 0);
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Zielseite (optional)</label>
                                 <input id="formTargetPath" type="text" class="w-full rounded-lg border-gray-300" placeholder="z. B. mitmachen">
-                                <p class="mt-1 text-xs text-gray-500">Wenn gesetzt, wird das Formular auf dieser Route automatisch eingebunden (zusÃ¤tzlich zu manuellen Shortcodes).</p>
+                                <p class="mt-1 text-xs text-gray-500">Wenn gesetzt, wird das Formular auf dieser Route automatisch eingebunden (zusätzlich zu manuellen Shortcodes).</p>
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Button-Beschriftung</label>
@@ -186,11 +186,11 @@ $formId = (int) ($_GET['id'] ?? 0);
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Beschreibung</label>
-                            <textarea id="formDescription" rows="2" class="w-full rounded-lg border-gray-300" placeholder="Kurzer erklÃ¤render Text oberhalb des Formulars"></textarea>
+                            <textarea id="formDescription" rows="2" class="w-full rounded-lg border-gray-300" placeholder="Kurzer erklärender Text oberhalb des Formulars"></textarea>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Erfolgsmeldung</label>
-                            <textarea id="formSuccessMessage" rows="2" class="w-full rounded-lg border-gray-300" placeholder="Vielen Dank! Ihre Anfrage wurde erfolgreich Ã¼bermittelt."></textarea>
+                            <textarea id="formSuccessMessage" rows="2" class="w-full rounded-lg border-gray-300" placeholder="Vielen Dank! Ihre Anfrage wurde erfolgreich übermittelt."></textarea>
                         </div>
                         <label class="inline-flex items-center gap-2 text-sm font-medium text-gray-700">
                             <input id="formIsActive" type="checkbox" class="rounded border-gray-300 text-primary" checked>
@@ -203,11 +203,11 @@ $formId = (int) ($_GET['id'] ?? 0);
                             <h3 class="text-sm font-bold uppercase tracking-wider text-gray-700">Formularfelder</h3>
                             <button type="button" id="addFieldBtn" class="px-3 py-2 rounded-lg bg-primary text-white text-xs font-bold flex items-center gap-1.5">
                                 <span class="material-symbols-outlined text-sm">add</span>
-                                Feld hinzufÃ¼gen
+                                Feld hinzufügen
                             </button>
                         </div>
                         <div id="fieldsList" class="space-y-3"></div>
-                        <p class="text-xs text-gray-500">UnterstÃ¼tzte Typen: Text, E-Mail, Telefon, Textbereich, Checkbox, Datei-Upload, Signatur-Pad, Ãœberschrift, Trennelement. Pro Feld kann zudem volle oder halbe Breite gewählt werden.</p>
+                        <p class="text-xs text-gray-500">Unterstützte Typen: Text, E-Mail, Telefon, Textbereich, Checkbox, Datei-Upload, Signatur-Pad, Überschrift, Trennelement. Pro Feld kann zudem volle oder halbe Breite gewählt werden.</p>
                     </div>
                 </section>
 
@@ -215,7 +215,7 @@ $formId = (int) ($_GET['id'] ?? 0);
                     <div class="bg-white border border-gray-200 rounded-xl p-5 space-y-4">
                         <h3 class="text-sm font-bold uppercase tracking-wider text-gray-700">E-Mail-Konfiguration</h3>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">EmpfÃ¤nger *</label>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Empfänger *</label>
                             <textarea id="emailRecipients" rows="2" class="w-full rounded-lg border-gray-300" placeholder="mail@beispiel.de, vorstand@beispiel.de"></textarea>
                         </div>
                         <div>

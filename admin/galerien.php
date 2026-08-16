@@ -28,7 +28,7 @@ $user = $_SESSION;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerien â€“ CMS Backend</title>
+    <title>Galerien – CMS Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -64,7 +64,7 @@ $user = $_SESSION;
             </div>
             <nav class="sidebar-nav space-y-1">
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="dashboard.php"><span class="material-symbols-outlined">dashboard</span><span class="sidebar-label">Dashboard</span></a>
-                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="beitraege.php"><span class="material-symbols-outlined">article</span><span class="sidebar-label">BeitrÃ¤ge</span></a>
+                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="beitraege.php"><span class="material-symbols-outlined">article</span><span class="sidebar-label">Beiträge</span></a>
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="seiten.php"><span class="material-symbols-outlined">web</span><span class="sidebar-label">Seiten</span></a>
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="formulare.php"><span class="material-symbols-outlined">list_alt</span><span class="sidebar-label">Formulare</span></a>
                 <a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg" href="galerien.php"><span class="material-symbols-outlined">photo_library</span><span class="sidebar-label">Galerien</span></a>
@@ -112,7 +112,7 @@ $user = $_SESSION;
             <div class="flex items-center justify-between">
                 <div>
                     <h1 class="text-2xl lg:text-3xl font-black">Foto-Alben</h1>
-                    <p class="text-gray-500">Verwaltung und Einbettung Ã¼ber Platzhalter [gallery:slug].</p>
+                    <p class="text-gray-500">Verwaltung und Einbettung über Platzhalter [gallery:slug].</p>
                 </div>
                 <a href="galerie-editor.php" class="bg-primary text-white px-4 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2"><span class="material-symbols-outlined text-sm">add</span>Neues Album</a>
             </div>

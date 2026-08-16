@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Admin Dashboard
+ * WKC – Admin Dashboard
  */
 require_once __DIR__ . '/../api/config.php';
 session_name(SESSION_NAME);
@@ -30,7 +30,7 @@ $canEditContent = $isAdmin || $isEditor;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard â€“ WKC Backend</title>
+    <title>Dashboard – WKC Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -91,9 +91,9 @@ $canEditContent = $isAdmin || $isEditor;
                         <span class="sidebar-label">Dashboard</span>
                     </a>
                     <?php if ($canEditContent): ?>
-                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="BeitrÃ¤ge">
+                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="Beiträge">
                         <span class="material-symbols-outlined">article</span>
-                        <span class="sidebar-label">BeitrÃ¤ge</span>
+                        <span class="sidebar-label">Beiträge</span>
                     </a>
                     <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="seiten.php" title="Seiten">
                         <span class="material-symbols-outlined">web</span>
@@ -181,7 +181,7 @@ $canEditContent = $isAdmin || $isEditor;
                 <!-- Welcome -->
                 <div>
                     <h2 class="text-2xl lg:text-3xl font-black text-gray-900 tracking-tight">Dashboard</h2>
-                    <p class="text-gray-500 mt-1">Willkommen zurÃ¼ck, <?= htmlspecialchars($user['display_name']) ?>.</p>
+                    <p class="text-gray-500 mt-1">Willkommen zurück, <?= htmlspecialchars($user['display_name']) ?>.</p>
                 </div>
 
                 <?php if ($canEditContent): ?>
@@ -193,8 +193,8 @@ $canEditContent = $isAdmin || $isEditor;
                             <span class="material-symbols-outlined text-3xl">article</span>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-500">BeitrÃ¤ge</p>
-                            <p class="text-2xl font-black text-gray-900" id="statArticles">â€“</p>
+                            <p class="text-sm font-medium text-gray-500">Beiträge</p>
+                            <p class="text-2xl font-black text-gray-900" id="statArticles">–</p>
                         </div>
                     </div>
                     <div class="bg-white p-5 lg:p-6 rounded-xl border border-gray-200 flex items-center gap-4">
@@ -203,7 +203,7 @@ $canEditContent = $isAdmin || $isEditor;
                         </div>
                         <div>
                             <p class="text-sm font-medium text-gray-500">Ungelesene Nachrichten</p>
-                            <p class="text-2xl font-black text-gray-900" id="statUnreadMessages">â€“</p>
+                            <p class="text-2xl font-black text-gray-900" id="statUnreadMessages">–</p>
                         </div>
                     </div>
                     <div class="bg-white p-5 lg:p-6 rounded-xl border border-gray-200 flex items-center gap-4">
@@ -212,7 +212,7 @@ $canEditContent = $isAdmin || $isEditor;
                         </div>
                         <div>
                             <p class="text-sm font-medium text-gray-500">Mitglieder</p>
-                            <p class="text-2xl font-black text-gray-900" id="statMembers">â€“</p>
+                            <p class="text-2xl font-black text-gray-900" id="statMembers">–</p>
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@ $canEditContent = $isAdmin || $isEditor;
                     <!-- Articles Table -->
                     <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                         <div class="px-6 py-5 border-b border-gray-200 flex justify-between items-center">
-                            <h3 class="font-bold text-lg text-gray-900">Aktuelle BeitrÃ¤ge</h3>
+                            <h3 class="font-bold text-lg text-gray-900">Aktuelle Beiträge</h3>
                             <a class="text-primary text-sm font-bold hover:underline" href="beitraege.php">Alle anzeigen</a>
                         </div>
                         <div class="overflow-x-auto">
@@ -337,7 +337,7 @@ $canEditContent = $isAdmin || $isEditor;
                                 <tr class="bg-bg-light/50">
                                     <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Dokument</th>
                                     <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Dateiname</th>
-                                    <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">GrÃ¶ÃŸe</th>
+                                    <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Größe</th>
                                     <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Aktionen</th>
                                 </tr>
                             </thead>
@@ -362,7 +362,7 @@ $canEditContent = $isAdmin || $isEditor;
                             <div class="flex items-start gap-4 p-4 bg-bg-light rounded-xl">
                                 <div class="bg-primary/10 p-3 rounded-lg text-primary flex-shrink-0 text-center min-w-[56px]">
                                     <span class="text-xs font-bold uppercase block">Kein</span>
-                                    <span class="text-lg font-black block leading-none">â€“</span>
+                                    <span class="text-lg font-black block leading-none">–</span>
                                 </div>
                                 <div>
                                     <p class="text-sm text-gray-500">Aktuell sind keine Termine geplant.</p>

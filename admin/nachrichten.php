@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Admin Nachrichten
+ * WKC – Admin Nachrichten
  * Zeigt Kontaktanfragen, Beitrittsanfragen und Nachrichten an.
  */
 require_once __DIR__ . '/../api/config.php';
@@ -35,7 +35,7 @@ if (!$canEditContent) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nachrichten â€“ WKC Backend</title>
+    <title>Nachrichten – WKC Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -97,9 +97,9 @@ if (!$canEditContent) {
                         <span class="sidebar-label">Dashboard</span>
                     </a>
                     <?php if ($canEditContent): ?>
-                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="BeitrÃ¤ge">
+                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="Beiträge">
                         <span class="material-symbols-outlined">article</span>
-                        <span class="sidebar-label">BeitrÃ¤ge</span>
+                        <span class="sidebar-label">Beiträge</span>
                     </a>
                     <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="seiten.php" title="Seiten">
                         <span class="material-symbols-outlined">web</span>
@@ -278,7 +278,7 @@ if (!$canEditContent) {
                 <?php if ($isAdmin): ?>
                 <button id="btnDeleteMsg" onclick="deleteFromModal()" class="px-3 py-1.5 text-sm font-medium text-red-600 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors flex items-center gap-1.5">
                     <span class="material-symbols-outlined text-base">delete</span>
-                    LÃ¶schen
+                    Löschen
                 </button>
                 <?php endif; ?>
             </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Passwort setzen (Reset & Einladung)
+ * WKC – Passwort setzen (Reset & Einladung)
  */
 require_once __DIR__ . '/../api/config.php';
 header('Content-Type: text/html; charset=utf-8');
@@ -12,7 +12,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passwort festlegen â€“ WKC</title>
+    <title>Passwort festlegen – WKC</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -49,20 +49,20 @@ session_start();
                     <img src="../src/wkc-logo.svg" alt="WKC Logo" class="h-16" onerror="this.style.display='none'">
                 </div>
                 <h1 id="pageTitle" class="text-2xl font-black text-gray-900 tracking-tight">Passwort festlegen</h1>
-                <p id="pageSubtitle" class="text-sm text-gray-500 mt-2 font-medium">Bitte wÃ¤hlen Sie ein neues Passwort.</p>
+                <p id="pageSubtitle" class="text-sm text-gray-500 mt-2 font-medium">Bitte wählen Sie ein neues Passwort.</p>
             </div>
 
             <!-- Loading State -->
             <div id="loadingState" class="px-8 pb-8 text-center">
                 <span class="material-symbols-outlined mx-auto text-4xl text-primary animate-pulse">hourglass_top</span>
-                <p class="text-sm text-gray-500 mt-3">Link wird Ã¼berprÃ¼ft...</p>
+                <p class="text-sm text-gray-500 mt-3">Link wird überprüft...</p>
             </div>
 
             <!-- Invalid Token State -->
             <div id="invalidState" class="hidden px-8 pb-8">
                 <div class="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
                     <span class="material-symbols-outlined text-red-500 text-4xl mb-3 block">link_off</span>
-                    <p class="text-sm text-red-700 font-bold mb-2">Link ungÃ¼ltig oder abgelaufen</p>
+                    <p class="text-sm text-red-700 font-bold mb-2">Link ungültig oder abgelaufen</p>
                     <p class="text-xs text-red-600">Bitte fordern Sie einen neuen Link an.</p>
                 </div>
                 <a href="passwort-vergessen.php" class="mt-4 block w-full text-center h-12 leading-[3rem] bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-lg shadow-primary/20 transition-all">
@@ -97,7 +97,7 @@ session_start();
                 </div>
 
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2" for="confirmPassword">Passwort bestÃ¤tigen</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2" for="confirmPassword">Passwort bestätigen</label>
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl">lock_reset</span>
                         <input class="w-full h-12 pl-10 pr-12 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-200"
@@ -207,13 +207,13 @@ session_start();
 
                 if (data.type === 'invitation') {
                     document.getElementById('pageTitle').textContent = 'Willkommen bei WKC';
-                    document.getElementById('pageSubtitle').textContent = 'Legen Sie Ihr persÃ¶nliches Passwort fest.';
+                    document.getElementById('pageSubtitle').textContent = 'Legen Sie Ihr persönliches Passwort fest.';
                     document.getElementById('invitationInfo').classList.remove('hidden');
                     document.getElementById('welcomeName').textContent = data.display_name;
                     document.getElementById('welcomeUsername').textContent = data.username;
                 } else {
                     document.getElementById('pageTitle').textContent = 'Neues Passwort festlegen';
-                    document.getElementById('pageSubtitle').textContent = 'WÃ¤hlen Sie ein sicheres Passwort.';
+                    document.getElementById('pageSubtitle').textContent = 'Wählen Sie ein sicheres Passwort.';
                 }
             } else {
                 document.getElementById('invalidState').classList.remove('hidden');
@@ -235,7 +235,7 @@ session_start();
 
         if (newPw !== confirmPw) {
             alertBox.className = 'mx-8 mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 font-medium flex items-center gap-2';
-            alertBox.innerHTML = '<span class="material-symbols-outlined text-lg">error</span> PasswÃ¶rter stimmen nicht Ã¼berein.';
+            alertBox.innerHTML = '<span class="material-symbols-outlined text-lg">error</span> Passwörter stimmen nicht überein.';
             return;
         }
         if (newPw.length < 8) {

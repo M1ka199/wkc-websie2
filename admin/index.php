@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Admin Login
+ * WKC – Admin Login
  */
 require_once __DIR__ . '/../api/config.php';
 header('Content-Type: text/html; charset=utf-8');
@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login â€“ WKC Backend</title>
+    <title>Login – WKC Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -88,7 +88,7 @@ if (isset($_SESSION['user_id'])) {
                         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl">lock</span>
                         <input
                             class="w-full h-12 pl-10 pr-12 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-200"
-                            id="password" name="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" type="password" required>
+                            id="password" name="password" placeholder="••••••••" type="password" required>
                         <button
                             type="button"
                             id="togglePassword"
