@@ -510,9 +510,18 @@ function sendFormSubmissionMail(array $form, array $submittedFields, array $atta
         }
 
         $mail->send();
+        if (function_exists('recordMailDeliveryAttempt')) {
+            $context = 'form:' . (string) ($form['slug'] ?? 'unknown');
+            recordMailDeliveryAttempt(true, $context);
+        }
         return true;
     } catch (Throwable $e) {
         error_log('WKC dynamic form mail error: ' . $e->getMessage());
+        $details = trim((string) $e->getMessage());
+        if (function_exists('recordMailDeliveryAttempt')) {
+            $context = 'form:' . (string) ($form['slug'] ?? 'unknown');
+            recordMailDeliveryAttempt(false, $context, $details !== '' ? $details : null);
+        }
         return false;
     }
 }

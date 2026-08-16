@@ -187,7 +187,7 @@ $canEditContent = $isAdmin || $isEditor;
                 <?php if ($canEditContent): ?>
                 <!-- ====== EDITOR / ADMIN DASHBOARD ====== -->
                 <!-- Stats Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
                     <div class="bg-white p-5 lg:p-6 rounded-xl border border-gray-200 flex items-center gap-4">
                         <div class="bg-primary/10 p-3 rounded-lg text-primary">
                             <span class="material-symbols-outlined text-3xl">article</span>
@@ -215,6 +215,26 @@ $canEditContent = $isAdmin || $isEditor;
                             <p class="text-2xl font-black text-gray-900" id="statMembers">–</p>
                         </div>
                     </div>
+                    <?php if ($isAdmin): ?>
+                    <div class="bg-white p-5 lg:p-6 rounded-xl border border-gray-200">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-violet-500/10 p-3 rounded-lg text-violet-600">
+                                    <span class="material-symbols-outlined text-3xl">alternate_email</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-gray-500">E-Mail-Versand</p>
+                                    <p class="text-sm font-bold text-gray-900" id="mailStatusBadge">Prüfung läuft...</p>
+                                </div>
+                            </div>
+                            <button type="button" id="mailStatusProbeBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 text-xs font-bold text-gray-600 hover:bg-gray-50 transition-colors">
+                                <span class="material-symbols-outlined text-sm">network_check</span>
+                                Testen
+                            </button>
+                        </div>
+                        <p id="mailStatusHint" class="mt-3 text-xs text-gray-500 leading-relaxed">Lade Mail-Status...</p>
+                    </div>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Content Grid -->

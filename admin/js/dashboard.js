@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadMessages();
         loadAdminEvents();
         loadAdminDocuments();
+        loadMailStatus(false);
     }
     // Member dashboard: load events + documents
     if (typeof CAN_EDIT_CONTENT !== 'undefined' && !CAN_EDIT_CONTENT) {
@@ -65,6 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Setup drop zone for document upload
     setupDropZone();
+
+    const probeBtn = document.getElementById('mailStatusProbeBtn');
+    if (probeBtn) {
+        probeBtn.addEventListener('click', () => {
+            loadMailStatus(true);
+        });
+    }
 });
 
 // ============================
@@ -134,6 +142,99 @@ async function loadUnreadMessagesCount() {
         if (el) el.textContent = unread;
     } catch (err) {
         console.error('loadUnreadMessagesCount:', err);
+    }
+}
+
+function formatDateTimeCompact(iso) {
+    if (!iso) return '–';
+    const parsed = new Date(iso);
+    if (Number.isNaN(parsed.getTime())) return iso;
+    return parsed.toLocaleString('de-DE', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+}
+
+async function loadMailStatus(runProbe) {
+    const badge = document.getElementById('mailStatusBadge');
+    const hint = document.getElementById('mailStatusHint');
+    const probeBtn = document.getElementById('mailStatusProbeBtn');
+    if (!badge || !hint) return;
+
+    if (probeBtn) probeBtn.disabled = true;
+    badge.className = 'text-sm font-bold text-gray-900';
+    badge.textContent = runProbe ? 'Teste Verbindung...' : 'Prüfung läuft...';
+    hint.className = 'mt-3 text-xs text-gray-500 leading-relaxed';
+    hint.textContent = runProbe ? 'SMTP-Verbindung wird geprüft...' : 'Lade Mail-Status...';
+
+    try {
+        const probeParam = runProbe ? '&probe=1' : '';
+        const res = await fetch(`../api/settings.php?scope=admin&action=mail_status${probeParam}`, { credentials: 'include' });
+        const data = await res.json();
+        if (!res.ok) {
+            throw new Error(data.error || 'Mail-Status konnte nicht geladen werden.');
+        }
+
+        const mail = data.mail || {};
+        const configError = mail.config_error || '';
+        const delivery = mail.delivery || {};
+        const lastError = delivery.last_error && typeof delivery.last_error === 'object' ? delivery.last_error : null;
+        const probe = mail.probe && typeof mail.probe === 'object' ? mail.probe : null;
+
+        if (configError) {
+            badge.className = 'text-sm font-bold text-red-700';
+            badge.textContent = 'Konfiguration fehlerhaft';
+            hint.className = 'mt-3 text-xs text-red-700 leading-relaxed';
+            hint.textContent = configError;
+            return;
+        }
+
+        if (probe) {
+            if (probe.ok) {
+                badge.className = 'text-sm font-bold text-green-700';
+                badge.textContent = 'SMTP-Verbindung ok';
+            } else {
+                badge.className = 'text-sm font-bold text-red-700';
+                badge.textContent = 'SMTP-Verbindung fehlgeschlagen';
+            }
+        } else if (delivery.last_success === true) {
+            badge.className = 'text-sm font-bold text-green-700';
+            badge.textContent = 'Letzter Versand erfolgreich';
+        } else if (lastError) {
+            badge.className = 'text-sm font-bold text-amber-700';
+            badge.textContent = 'Letzter Versand fehlgeschlagen';
+        } else {
+            badge.className = 'text-sm font-bold text-gray-700';
+            badge.textContent = 'Noch kein Versand protokolliert';
+        }
+
+        const parts = [];
+        if (probe) {
+            parts.push(probe.ok ? 'SMTP-Test erfolgreich.' : `SMTP-Testfehler: ${probe.error || 'Unbekannter Fehler.'}`);
+        }
+        if (lastError && lastError.message) {
+            parts.push(`Letzter Fehler (${formatDateTimeCompact(lastError.at || '')}): ${lastError.message}`);
+        } else if (delivery.last_success_at) {
+            parts.push(`Letzter erfolgreicher Versand: ${formatDateTimeCompact(delivery.last_success_at)}`);
+        } else if (delivery.last_attempt_at) {
+            parts.push(`Letzter Versandversuch: ${formatDateTimeCompact(delivery.last_attempt_at)}`);
+        }
+        if (delivery.last_context) {
+            parts.push(`Kontext: ${delivery.last_context}`);
+        }
+
+        hint.className = 'mt-3 text-xs text-gray-600 leading-relaxed';
+        hint.textContent = parts.length ? parts.join(' ') : 'Keine weiteren Diagnosedaten vorhanden.';
+    } catch (err) {
+        badge.className = 'text-sm font-bold text-red-700';
+        badge.textContent = 'Status nicht verfügbar';
+        hint.className = 'mt-3 text-xs text-red-700 leading-relaxed';
+        hint.textContent = err.message || 'Mail-Status konnte nicht geladen werden.';
+    } finally {
+        if (probeBtn) probeBtn.disabled = false;
     }
 }
 

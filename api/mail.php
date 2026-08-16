@@ -81,6 +81,82 @@ function createMailer(): PHPMailer {
     return $mail;
 }
 
+function recordMailDeliveryAttempt(bool $success, string $context, ?string $errorMessage = null): void {
+    $status = getAppSetting('mail_delivery_status', []);
+    if (!is_array($status)) {
+        $status = [];
+    }
+
+    $now = date('c');
+    $status['last_attempt_at'] = $now;
+    $status['last_context'] = $context;
+    $status['last_success'] = $success;
+    if ($success) {
+        $status['last_success_at'] = $now;
+        $status['last_error'] = null;
+    } else {
+        $status['last_error'] = [
+            'message' => $errorMessage ?? 'Unbekannter Mailfehler',
+            'at' => $now,
+            'context' => $context,
+        ];
+    }
+
+    setAppSetting('mail_delivery_status', $status);
+}
+
+function getMailDeliveryStatus(): array {
+    $smtp = getAppSetting('smtp', []);
+    if (!is_array($smtp)) {
+        $smtp = [];
+    }
+    $status = getAppSetting('mail_delivery_status', []);
+    if (!is_array($status)) {
+        $status = [];
+    }
+
+    return [
+        'config_error' => mailConfigurationError(),
+        'smtp' => [
+            'host' => trim((string) ($smtp['host'] ?? '')),
+            'port' => (int) ($smtp['port'] ?? 0),
+            'secure' => strtolower(trim((string) ($smtp['secure'] ?? 'tls'))),
+            'from' => trim((string) ($smtp['from'] ?? '')),
+            'user' => trim((string) ($smtp['user'] ?? '')),
+            'contact_recipient' => trim((string) ($smtp['contact_recipient'] ?? '')),
+        ],
+        'delivery' => [
+            'last_attempt_at' => (string) ($status['last_attempt_at'] ?? ''),
+            'last_success' => (bool) ($status['last_success'] ?? false),
+            'last_success_at' => (string) ($status['last_success_at'] ?? ''),
+            'last_context' => (string) ($status['last_context'] ?? ''),
+            'last_error' => is_array($status['last_error'] ?? null) ? $status['last_error'] : null,
+        ],
+    ];
+}
+
+function probeMailTransport(): array {
+    try {
+        $mail = createMailer();
+        $mail->Timeout = 10;
+        $connected = $mail->smtpConnect();
+        if (!$connected) {
+            $details = trim((string) $mail->ErrorInfo);
+            throw new RuntimeException($details !== '' ? $details : 'SMTP-Verbindung konnte nicht aufgebaut werden.');
+        }
+        $mail->smtpClose();
+        return [
+            'ok' => true,
+            'message' => 'SMTP-Verbindung erfolgreich aufgebaut.',
+        ];
+    } catch (Throwable $e) {
+        return [
+            'ok' => false,
+            'error' => $e->getMessage(),
+        ];
+    }
+}
+
 // ============================
 // Send Email (wrapper)
 // ============================
@@ -96,12 +172,19 @@ function sendMail(string $to, string $subject, string $htmlBody, ?string $replyT
         $mail->Body    = $htmlBody;
         $mail->AltBody = strip_tags(str_replace(['<br>', '<br/>', '<br />', '</p>', '</div>', '</tr>'], "\n", $htmlBody));
         $mail->send();
+        recordMailDeliveryAttempt(true, 'global_mail');
         return true;
     } catch (Throwable $e) {
         error_log("WKC Mail Error: " . $e->getMessage());
+        $details = trim((string) $e->getMessage());
         if (isset($mail)) {
             error_log("PHPMailer ErrorInfo: " . $mail->ErrorInfo);
+            $errorInfo = trim((string) $mail->ErrorInfo);
+            if ($errorInfo !== '') {
+                $details = $details !== '' ? ($details . ' | ' . $errorInfo) : $errorInfo;
+            }
         }
+        recordMailDeliveryAttempt(false, 'global_mail', $details !== '' ? $details : null);
         return false;
     }
 }

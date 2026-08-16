@@ -53,10 +53,19 @@ function saveBrandingFile(array $file, string $prefix): string {
 if ($method === 'GET') {
     $allSettings = getAppSettings();
     $authUser = authenticatedUser(false);
+    $action = trim((string) ($_GET['action'] ?? ''));
 
     if (($_GET['scope'] ?? '') === 'admin') {
         if (($authUser['role'] ?? '') !== 'admin') {
             jsonResponse(['error' => 'Nur Administratoren'], 403);
+        }
+        if ($action === 'mail_status') {
+            require_once __DIR__ . '/mail.php';
+            $mailStatus = getMailDeliveryStatus();
+            if (($_GET['probe'] ?? '') === '1') {
+                $mailStatus['probe'] = probeMailTransport();
+            }
+            jsonResponse(['mail' => $mailStatus]);
         }
         jsonResponse(['settings' => $allSettings]);
     }
