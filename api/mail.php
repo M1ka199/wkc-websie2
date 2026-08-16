@@ -335,7 +335,7 @@ function emailMembershipConfirmation(string $name): string {
         <p style="margin: 0 0 16px;">Ein Mitglied unseres Vorstands wird sich in Kürze bei Ihnen melden, um die nächsten Schritte zu besprechen.</p>
         <div style="background: #f0fdf4; padding: 16px 20px; border-radius: 12px; border-left: 4px solid #7c3aed; margin: 20px 0;">
             <p style="margin: 0; font-size: 14px; color: #374151; font-style: italic;">
-                „Politik lebt vom Mitmachen. Wir freuen uns, Sie bald in unserer Gemeinschaft begrüßen zu dürfen."
+                „Karneval lebt vom Mitmachen. Wir freuen uns, Sie bald in unserer Gemeinschaft begrüßen zu dürfen."
             </p>
         </div>
         <p style="margin: 0 0 8px;">Herzliche Grüße,<br>Ihre WKC</p>';
@@ -404,4 +404,3 @@ function emailPasswordChanged(string $name): string {
 
     return emailTemplate('Passwort geändert', $content, 'Zum Login', SITE_URL . '/admin/');
 }
-

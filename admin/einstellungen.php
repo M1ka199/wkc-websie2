@@ -511,7 +511,7 @@ $canEditContent = $isAdmin || $isEditor;
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <label class="inline-flex items-center gap-2 text-sm text-gray-700">
                                     <input type="checkbox" id="featurePoliticsEnabled" class="rounded border-gray-300 text-primary focus:ring-primary">
-                                    Politik/WÃ¤hlergruppe anzeigen
+                                    Themenbereich anzeigen
                                 </label>
                             </div>
                         </div>
