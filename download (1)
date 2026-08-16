@@ -1,0 +1,42 @@
+# WKC CMS - Clean URL Routing
+DirectoryIndex index.php index.html
+AddDefaultCharset UTF-8
+
+<IfModule mod_mime.c>
+    AddCharset UTF-8 .html .htm .css .js .json .xml .txt
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Database files and upload directories must never be executable or downloadable.
+    RewriteRule ^api/data/.*\.sqlite(?:-(?:wal|shm|journal))?$ - [F,NC,L]
+    RewriteRule ^(?:uploads|src/vorstandsmitglieder)/.*\.(?:php[0-9]?|phtml|phar|cgi|pl|py|asp|aspx|jsp|sh)$ - [F,NC,L]
+
+    # Redirect legacy .html URLs to clean CMS routes so styling/settings stay unified.
+    RewriteRule ^index\.html$ / [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/(?:artikel)\.html(?:\?|$) [NC]
+    RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+    # Existing files/directories are served directly.
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Legacy mitglied routes -> vorstand
+    RewriteRule ^mitglied/?$ /vorstand [R=301,L]
+    RewriteRule ^mitglied/([a-zA-Z0-9\-_]+)/?$ /vorstand/$1 [R=301,L]
+
+    # Dedicated board profile route
+    RewriteRule ^vorstand/([a-zA-Z0-9\-_]+)/?$ index.php [QSA,L]
+
+    # Dedicated article detail route. Keep the root /artikel route for CMS content.
+    RewriteRule ^artikel/([a-zA-Z0-9\-_]+)/?$ index.php [QSA,L]
+
+    # Front controller handles homepage, CMS pages, article redirects and static fallbacks.
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Hinweis: Keine "Options"- oder "php_value"-Direktiven in .htaccess,
+# da diese auf manchen Plesk-Setups (z.B. FPM/restriktives AllowOverride)
+# einen HTTP 500 verursachen.
