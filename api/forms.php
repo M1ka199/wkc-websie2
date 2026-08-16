@@ -708,16 +708,16 @@ if ($method === 'POST' && $action === 'submit') {
     ]);
 
     $mailSent = sendFormSubmissionMail($form, $submitted, $attachments);
-    if (!$mailSent) {
-        jsonResponse([
-            'error' => 'Ihre Eingabe wurde gespeichert, konnte aber nicht per E-Mail weitergeleitet werden. Bitte kontaktieren Sie den Administrator.',
-        ], 503);
-    }
-
-    jsonResponse([
+    $response = [
         'success' => true,
         'message' => (string) ($form['success_message'] ?? 'Vielen Dank! Ihre Anfrage wurde erfolgreich übermittelt.'),
-    ], 201);
+        'mailDelivered' => $mailSent,
+    ];
+    if (!$mailSent) {
+        $response['warning'] = 'Ihre Eingabe wurde gespeichert, konnte aber nicht per E-Mail weitergeleitet werden. Bitte kontaktieren Sie den Administrator.';
+    }
+
+    jsonResponse($response, 201);
 }
 
 if ($method === 'GET' && $action === 'list') {

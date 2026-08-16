@@ -619,8 +619,13 @@ function bindDynamicFormSubmission(formElement, formConfig) {
                 throw new Error(data.error || 'Formular konnte nicht gesendet werden.');
             }
 
-            messageBox.className = 'dynamic-form-message rounded-xl p-4 text-sm font-medium bg-green-50 text-green-700 border border-green-200';
-            messageBox.textContent = data.message || formConfig.successMessage || 'Vielen Dank! Ihre Anfrage wurde übermittelt.';
+            if (data.warning) {
+                messageBox.className = 'dynamic-form-message rounded-xl p-4 text-sm font-medium bg-amber-50 text-amber-800 border border-amber-200';
+                messageBox.textContent = data.warning;
+            } else {
+                messageBox.className = 'dynamic-form-message rounded-xl p-4 text-sm font-medium bg-green-50 text-green-700 border border-green-200';
+                messageBox.textContent = data.message || formConfig.successMessage || 'Vielen Dank! Ihre Anfrage wurde übermittelt.';
+            }
             messageBox.classList.remove('hidden');
             formElement.reset();
 
@@ -1068,4 +1073,3 @@ function loadGoalsDetail() {
 
     function esc(t) { const d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML; }
 }
-
