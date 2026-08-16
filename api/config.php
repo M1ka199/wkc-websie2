@@ -758,8 +758,8 @@ function setupDatabase(?PDO $db = null): void {
             ],
             'branding' => [
                 'siteName' => SITE_NAME,
-                'logoHeader' => '/src/wkc-logo.json',
-                'logoFooter' => '/src/wkc-logo.json',
+                'logoHeader' => '/src/wkc-logo.svg',
+                'logoFooter' => '/src/wkc-logo-white.svg',
                 'favicon' => '',
             ],
             'typography' => [
@@ -947,8 +947,8 @@ function migrateLegacyBrandingSettings(PDO $db): void {
         if (!is_string($value)) {
             continue;
         }
-        if (preg_match('~^/src/[^/]*logo[^/]*\\.svg$~i', $value)) {
-            $branding[$key] = '/src/wkc-logo.json';
+        if (in_array($value, ['/src/wkc-logo.json', '/src/wkc-logo.svg', '/src/wkc-logo-white.svg'], true)) {
+            $branding[$key] = $key === 'logoFooter' ? '/src/wkc-logo-white.svg' : '/src/wkc-logo.svg';
             $changed = true;
         }
     }

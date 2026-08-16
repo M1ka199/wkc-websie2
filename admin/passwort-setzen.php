@@ -46,7 +46,7 @@ session_start();
         <div class="w-full max-w-[440px] bg-white rounded-xl shadow-xl shadow-primary/5 overflow-hidden border border-primary/10">
             <div class="pt-10 pb-6 px-8 text-center">
                 <div class="flex justify-center mb-6">
-                    <img src="../src/wkc-logo.json" alt="WKC Logo" class="h-16" onerror="this.style.display='none'">
+                    <img src="../src/wkc-logo.svg" alt="WKC Logo" class="h-16" onerror="this.style.display='none'">
                 </div>
                 <h1 id="pageTitle" class="text-2xl font-black text-gray-900 tracking-tight">Passwort festlegen</h1>
                 <p id="pageSubtitle" class="text-sm text-gray-500 mt-2 font-medium">Bitte wÃ¤hlen Sie ein neues Passwort.</p>
@@ -54,7 +54,7 @@ session_start();
 
             <!-- Loading State -->
             <div id="loadingState" class="px-8 pb-8 text-center">
-                <div id="loadingLottie" class="mx-auto h-14 w-14"></div>
+                <span class="material-symbols-outlined mx-auto text-4xl text-primary animate-pulse">hourglass_top</span>
                 <p class="text-sm text-gray-500 mt-3">Link wird Ã¼berprÃ¼ft...</p>
             </div>
 
@@ -154,21 +154,8 @@ session_start();
     <div class="fixed -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
     <div class="fixed top-1/2 right-0 -translate-y-1/2 w-32 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
     const token = new URLSearchParams(window.location.search).get('token');
-    if (window.lottie) {
-        const loadingLottie = document.getElementById('loadingLottie');
-        if (loadingLottie) {
-            window.lottie.loadAnimation({
-                container: loadingLottie,
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                path: '../src/wkc-logo.json',
-            });
-        }
-    }
 
     // Password visibility toggles
     document.getElementById('togglePw1').addEventListener('click', () => {

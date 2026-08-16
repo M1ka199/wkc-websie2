@@ -63,7 +63,7 @@ $pageId = intval($_GET['id'] ?? 0);
     <aside id="sidebar" class="w-72 bg-white border-r border-gray-200 flex flex-col fixed h-full z-20 transition-all duration-300 -translate-x-full lg:translate-x-0">
         <div class="p-6 sidebar-content">
             <div class="sidebar-header flex items-center justify-between mb-6">
-                <a href="dashboard.php" class="sidebar-logo-link"><img src="../src/wkc-logo.json" alt="Logo" class="h-auto w-full max-w-[10rem]"></a>
+                <a href="dashboard.php" class="sidebar-logo-link"><img src="../src/wkc-logo.svg" alt="Logo" class="h-auto w-full max-w-[10rem]"></a>
                 <button id="collapseBtn" onclick="toggleCollapse()" class="p-1.5 rounded-lg text-gray-400 hover:bg-bg-light hover:text-gray-600 transition-colors flex-shrink-0" title="Seitenleiste einklappen">
                     <span class="material-symbols-outlined" id="collapseIcon">chevron_left</span>
                 </button>

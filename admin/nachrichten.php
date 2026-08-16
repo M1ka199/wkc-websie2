@@ -85,7 +85,7 @@ if (!$canEditContent) {
             <div class="p-6 sidebar-content">
                 <div class="sidebar-header flex items-center justify-between mb-6">
                     <a href="dashboard.php" class="sidebar-logo-link">
-                        <img src="../src/wkc-logo.json" alt="WKC Logo" class="h-auto w-full max-w-[11rem]" onerror="this.style.display='none'">
+                        <img src="../src/wkc-logo.svg" alt="WKC Logo" class="h-auto w-full max-w-[11rem]" onerror="this.style.display='none'">
                     </a>
                     <button id="collapseBtn" onclick="toggleCollapse()" class="p-1.5 rounded-lg text-gray-400 hover:bg-bg-light hover:text-gray-600 transition-colors flex-shrink-0" title="Seitenleiste einklappen">
                         <span class="material-symbols-outlined" id="collapseIcon">chevron_left</span>
@@ -210,7 +210,7 @@ if (!$canEditContent) {
                 <!-- Messages List -->
                 <div id="messagesList" class="space-y-2">
                     <div class="flex items-center justify-center py-16 text-gray-400">
-                        <div id="messagesLoadingLottie" class="h-14 w-14"></div>
+                        <span class="material-symbols-outlined text-4xl animate-pulse">hourglass_top</span>
                     </div>
                 </div>
 
@@ -285,7 +285,6 @@ if (!$canEditContent) {
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
     // ============================
     // Sidebar
@@ -322,18 +321,6 @@ if (!$canEditContent) {
         window.location.href = 'index.php';
     });
 
-    if (window.lottie) {
-        const messagesLoadingLottie = document.getElementById('messagesLoadingLottie');
-        if (messagesLoadingLottie) {
-            window.lottie.loadAnimation({
-                container: messagesLoadingLottie,
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                path: '../src/wkc-logo.json',
-            });
-        }
-    }
     </script>
     <script src="js/admin-theme.js?v=20260816-2"></script>
     <script src="js/shared.js"></script>

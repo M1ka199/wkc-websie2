@@ -503,9 +503,10 @@ function extractStaticRouteScripts(string $html): string {
 function renderShellStart(array $branding, array $mainMenu): string {
     $desktopMenu = renderDesktopMenuItems($mainMenu);
     $mobileMenu = renderMobileMenuItems($mainMenu);
+    $headerLogo = h((string) ($branding['logoHeader'] ?? '/src/wkc-logo.svg'));
     return '<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">'
         . '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between h-20 items-center">'
-        . '<a href="/" class="flex items-center group"><span data-lottie-logo="header" data-brand-logo="header" role="img" aria-label="Logo" class="inline-flex items-center h-12 w-[11rem] max-w-full"></span></a>'
+        . '<a href="/" class="flex items-center group"><img src="' . $headerLogo . '" data-brand-logo="header" alt="Logo" class="h-12 w-auto max-w-[11rem]"></a>'
         . '<div class="hidden lg:flex items-center gap-1">' . $desktopMenu . '</div>'
         . '</div></div></nav>'
         . '<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[998] hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>'
@@ -513,7 +514,7 @@ function renderShellStart(array $branding, array $mainMenu): string {
         . '<div class="bg-white rounded-t-3xl shadow-2xl shadow-black/20 max-h-[85vh] overflow-y-auto">'
         . '<div class="flex justify-center pt-3 pb-2"><div class="w-12 h-1.5 bg-gray-300 rounded-full"></div></div>'
         . '<div class="px-6 pb-4"><p class="text-xs font-bold text-primary uppercase tracking-widest mb-3">Navigation</p>'
-        . '<span data-lottie-logo="header" data-brand-logo="header" role="img" aria-label="Logo" class="inline-flex items-center h-10 mb-4 w-[10rem] max-w-full"></span></div>'
+        . '<img src="' . $headerLogo . '" data-brand-logo="header" alt="Logo" class="h-10 w-auto mb-4 max-w-[10rem]"></div>'
         . '<nav class="px-6 pb-8 space-y-1">' . $mobileMenu . '</nav></div></div>'
         . '<button id="mobile-menu-btn" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[1000] lg:hidden w-14 h-14 bg-primary text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center hover:bg-primary-dark transition-all active:scale-95">'
         . '<span class="material-symbols-outlined text-2xl menu-icon transition-transform duration-300">menu</span>'
@@ -536,11 +537,12 @@ function renderShellEnd(array $branding, array $footerMenu): string {
             . '<li><a href="/#kontakt" class="text-gray-400 hover:text-primary transition-colors">Kontakt</a></li>';
     }
 
+    $footerLogo = h((string) ($branding['logoFooter'] ?? '/src/wkc-logo-white.svg'));
     return '<footer class="bg-gray-900 text-white pt-16 pb-24">'
         . '<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">'
         . '<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">'
         . '<div class="md:col-span-2">'
-        . '<div class="flex items-center mb-6"><span data-lottie-logo="footer" data-brand-logo="footer" role="img" aria-label="Logo" class="inline-flex items-center h-10 w-[10rem] max-w-full"></span></div>'
+        . '<div class="flex items-center mb-6"><img src="' . $footerLogo . '" data-brand-logo="footer" alt="Logo" class="h-10 w-auto max-w-[10rem]"></div>'
         . '<p class="text-gray-400 max-w-sm leading-relaxed text-sm">Die WKC ist eine parteiunabhängige Vereinigung engagierter Bürgerinnen und Bürger, die sich für die positive Entwicklung unserer Heimat einsetzt.</p>'
         . '</div>'
         . '<div><h4 class="font-bold mb-6 text-sm uppercase tracking-widest text-gray-400">Navigation</h4><ul class="space-y-3 text-sm">' . $menuLinks . '</ul></div>'
@@ -577,6 +579,7 @@ $staticRoutes = [
     'kommunalwahlen-2021' => 'kommunalwahlen-2021.html',
     'so-funktioniert-waehlen' => 'so-funktioniert-waehlen.html',
     'termine' => 'termine.html',
+    'garden' => 'garden.html',
 ];
 
 if ($path === 'mitglied') {
@@ -585,7 +588,7 @@ if ($path === 'mitglied') {
 }
 
 if (preg_match('~^mitglied/([^/]+)$~', $path, $m)) {
-    header('Location: /vorstand/' . rawurlencode($m[1]), true, 301);
+    header('Location: /vorstand', true, 301);
     exit;
 }
 
@@ -602,8 +605,7 @@ if (preg_match('~^artikel/([^/]+)$~', $path, $m)) {
 }
 
 if (preg_match('~^vorstand/([^/]+)$~', $path, $m)) {
-    $_GET['slug'] = $m[1];
-    renderStaticRouteWithCms($db, __DIR__ . '/mitglied.html', $path, $branding, $mainMenu, $footerMenu, $seo);
+    header('Location: /vorstand', true, 301);
     exit;
 }
 

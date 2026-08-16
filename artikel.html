@@ -37,7 +37,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <a href="/" class="flex items-center group">
-                    <img src="/src/wkc-logo.json" data-brand-logo="header" alt="WKC Logo" class="h-12" onerror="this.style.display='none'" />
+                    <img src="/src/wkc-logo.svg" data-brand-logo="header" alt="WKC Logo" class="h-12" onerror="this.style.display='none'" />
                 </a>
                 <div class="hidden lg:flex items-center gap-1">
                     <a href="/" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-primary hover:bg-primary/5 transition-all">Startseite</a>
@@ -80,7 +80,7 @@
             <div class="flex justify-center pt-3 pb-2"><div class="w-12 h-1.5 bg-gray-300 rounded-full"></div></div>
             <div class="px-6 pb-4">
                 <p class="text-xs font-bold text-primary uppercase tracking-widest mb-3">Navigation</p>
-                <img src="/src/wkc-logo.json" data-brand-logo="header" alt="WKC Logo" class="h-10 mb-4" onerror="this.style.display='none'" />
+                <img src="/src/wkc-logo.svg" data-brand-logo="header" alt="WKC Logo" class="h-10 mb-4" onerror="this.style.display='none'" />
             </div>
             <nav class="px-6 pb-8 space-y-1">
                 <a href="/" class="mobile-nav-link flex items-center gap-4 px-4 py-3.5 rounded-xl text-gray-700 hover:bg-primary/5 hover:text-primary transition-all"><span class="material-symbols-outlined text-primary/60">home</span><span class="font-semibold">Startseite</span></a>
@@ -245,7 +245,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
                     <div class="flex items-center mb-6">
-                        <img src="/src/wkc-logo.json" data-brand-logo="footer" alt="WKC Logo" class="h-10" onerror="this.style.display='none'" />
+                        <img src="/src/wkc-logo-white.svg" data-brand-logo="footer" alt="WKC Logo" class="h-10" onerror="this.style.display='none'" />
                     </div>
                     <p class="text-gray-400 max-w-sm leading-relaxed text-sm">
                         Die WKC ist eine parteiunabhÃ¤ngige Vereinigung engagierter BÃ¼rgerinnen und BÃ¼rger,
@@ -344,10 +344,7 @@
                 document.getElementById('articleTitle').textContent = a.title;
 
                 // Author
-                const authorSlug = a.author_slug || '';
-                const authorProfileLink = authorSlug ? `/vorstand/${encodeURIComponent(authorSlug)}` : '#';
-
-                document.getElementById('authorLink').href = authorProfileLink;
+                document.getElementById('authorLink').href = '/vorstand';
                 document.getElementById('authorName').textContent = a.author_name || 'Unbekannt';
 
                 const avatarHTML = a.author_image
@@ -696,4 +693,3 @@
     <script src="/src/js/site-config.js"></script>
 </body>
 </html>
-
