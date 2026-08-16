@@ -64,7 +64,7 @@ $galleryId = intval($_GET['id'] ?? 0);
             </div>
             <nav class="sidebar-nav space-y-1">
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="dashboard.php"><span class="material-symbols-outlined">dashboard</span><span class="sidebar-label">Dashboard</span></a>
-                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="beitraege.php"><span class="material-symbols-outlined">article</span><span class="sidebar-label">BeitrÃ¤ge</span></a>
+                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="beitraege.php"><span class="material-symbols-outlined">article</span><span class="sidebar-label">Beiträge</span></a>
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="seiten.php"><span class="material-symbols-outlined">web</span><span class="sidebar-label">Seiten</span></a>
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="formulare.php"><span class="material-symbols-outlined">list_alt</span><span class="sidebar-label">Formulare</span></a>
                 <a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg" href="galerien.php"><span class="material-symbols-outlined">photo_library</span><span class="sidebar-label">Galerien</span></a>
@@ -89,7 +89,7 @@ $galleryId = intval($_GET['id'] ?? 0);
                 <h2 id="editorTitle" class="text-lg font-bold text-gray-900">Neue Galerie</h2>
             </div>
             <div class="flex items-center gap-2">
-                <button id="deleteGalleryBtn" class="px-3 py-2 rounded-lg border border-red-300 text-red-600 text-sm font-bold hidden">LÃ¶schen</button>
+                <button id="deleteGalleryBtn" class="px-3 py-2 rounded-lg border border-red-300 text-red-600 text-sm font-bold hidden">Löschen</button>
                 <button id="saveGalleryBtn" class="bg-primary text-white px-4 py-2.5 rounded-lg text-sm font-bold">Speichern</button>
             </div>
         </header>
@@ -109,11 +109,11 @@ $galleryId = intval($_GET['id'] ?? 0);
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Beschreibung</label>
-                        <textarea id="galleryDescription" rows="4" class="w-full rounded-lg border-gray-300" placeholder="Kurzbeschreibung fÃ¼r Teaser und SEO-Kontext"></textarea>
+                        <textarea id="galleryDescription" rows="4" class="w-full rounded-lg border-gray-300" placeholder="Kurzbeschreibung für Teaser und SEO-Kontext"></textarea>
                     </div>
                     <label class="inline-flex items-center gap-2 text-sm font-medium text-gray-700">
                         <input type="checkbox" id="galleryPublished" class="rounded border-gray-300 text-primary" checked>
-                        Ã–ffentlich sichtbar
+                        Öffentlich sichtbar
                     </label>
                 </div>
 
@@ -148,7 +148,7 @@ $galleryId = intval($_GET['id'] ?? 0);
                     <ul class="text-sm text-gray-600 list-disc ml-5 space-y-1">
                         <li>Cover-Bild ist automatisch das erste Bild der Reihenfolge.</li>
                         <li>Mit Pfeilen kannst du Bilder sortieren.</li>
-                        <li>Ã„nderungen werden sofort in der Galerieansicht nutzbar.</li>
+                        <li>Änderungen werden sofort in der Galerieansicht nutzbar.</li>
                     </ul>
                 </div>
             </aside>

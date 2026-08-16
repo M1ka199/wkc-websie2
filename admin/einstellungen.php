@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Einstellungen
+ * WKC – Einstellungen
  */
 require_once __DIR__ . '/../api/config.php';
 session_name(SESSION_NAME);
@@ -29,7 +29,7 @@ $canEditContent = $isAdmin || $isEditor;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Einstellungen â€“ WKC Backend</title>
+    <title>Einstellungen – WKC Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -90,9 +90,9 @@ $canEditContent = $isAdmin || $isEditor;
                         <span class="sidebar-label">Dashboard</span>
                     </a>
                     <?php if ($canEditContent): ?>
-                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="BeitrÃ¤ge">
+                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="Beiträge">
                         <span class="material-symbols-outlined">article</span>
-                        <span class="sidebar-label">BeitrÃ¤ge</span>
+                        <span class="sidebar-label">Beiträge</span>
                     </a>
                     <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="seiten.php" title="Seiten">
                         <span class="material-symbols-outlined">web</span>
@@ -184,7 +184,7 @@ $canEditContent = $isAdmin || $isEditor;
                         <button type="button" class="main-settings-tab-btn px-3 py-2 rounded-lg text-sm font-bold bg-primary text-white" data-main-tab="profile">Profil</button>
                         <?php if ($isAdmin): ?>
                         <button type="button" class="main-settings-tab-btn px-3 py-2 rounded-lg text-sm font-bold text-gray-600 hover:bg-bg-light" data-main-tab="design">Darstellung</button>
-                        <button type="button" class="main-settings-tab-btn px-3 py-2 rounded-lg text-sm font-bold text-gray-600 hover:bg-bg-light" data-main-tab="menu">MenÃ¼s</button>
+                        <button type="button" class="main-settings-tab-btn px-3 py-2 rounded-lg text-sm font-bold text-gray-600 hover:bg-bg-light" data-main-tab="menu">Menüs</button>
                         <button type="button" class="main-settings-tab-btn px-3 py-2 rounded-lg text-sm font-bold text-gray-600 hover:bg-bg-light" data-main-tab="seo">SEO & Features</button>
                         <button type="button" class="main-settings-tab-btn px-3 py-2 rounded-lg text-sm font-bold text-gray-600 hover:bg-bg-light" data-main-tab="integrations">Integrationen</button>
                         <button type="button" class="main-settings-tab-btn px-3 py-2 rounded-lg text-sm font-bold text-gray-600 hover:bg-bg-light" data-main-tab="smtp">E-Mail (SMTP)</button>
@@ -215,7 +215,7 @@ $canEditContent = $isAdmin || $isEditor;
                                 <div>
                                     <label for="profileImageInput" class="inline-flex items-center gap-2 px-4 py-2 bg-bg-light text-gray-700 rounded-lg text-sm font-medium cursor-pointer hover:bg-gray-200 transition-colors">
                                         <span class="material-symbols-outlined text-base">upload</span>
-                                        Bild Ã¤ndern
+                                        Bild ändern
                                     </label>
                                     <input type="file" id="profileImageInput" accept="image/*" class="hidden">
                                     <p class="text-xs text-gray-400 mt-1">JPG, PNG oder WebP. Max. 2 MB.</p>
@@ -270,7 +270,7 @@ $canEditContent = $isAdmin || $isEditor;
                                 <div>
                                     <label for="settingsFamilyStatus" class="text-xs font-bold text-gray-900 uppercase tracking-wider block mb-1">Familienstand</label>
                                     <select id="settingsFamilyStatus" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2.5">
-                                        <option value="">â€“ Bitte wÃ¤hlen â€“</option>
+                                        <option value="">– Bitte wählen –</option>
                                         <option value="ledig">Ledig</option>
                                         <option value="verheiratet">Verheiratet</option>
                                         <option value="geschieden">Geschieden</option>
@@ -308,17 +308,17 @@ $canEditContent = $isAdmin || $isEditor;
                         <div class="flex gap-3 pt-4 border-t border-gray-100">
                             <button type="submit" class="bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-dark transition-all shadow-sm shadow-primary/20 flex items-center gap-2">
                                 <span class="material-symbols-outlined text-lg">save</span>
-                                Ã„nderungen speichern
+                                Änderungen speichern
                             </button>
                         </div>
                     </form>
                 </div>
 
-                <!-- Passwort Ã¤ndern -->
+                <!-- Passwort ändern -->
                 <div id="passwordSettingsCard" class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
                     <div class="px-6 py-5 border-b border-gray-200 flex items-center gap-3">
                         <span class="material-symbols-outlined text-primary">lock</span>
-                        <h3 class="font-bold text-lg text-gray-900">Passwort Ã¤ndern</h3>
+                        <h3 class="font-bold text-lg text-gray-900">Passwort ändern</h3>
                     </div>
                     <form id="passwordForm" class="p-6 space-y-5">
                         <!-- Aktuelles Passwort -->
@@ -333,15 +333,15 @@ $canEditContent = $isAdmin || $isEditor;
                             <input type="password" id="newPassword" required minlength="8" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
                         </div>
 
-                        <!-- Neues Passwort bestÃ¤tigen -->
+                        <!-- Neues Passwort bestätigen -->
                         <div>
-                            <label for="confirmPassword" class="block text-sm font-bold text-gray-700 mb-1">Neues Passwort bestÃ¤tigen *</label>
+                            <label for="confirmPassword" class="block text-sm font-bold text-gray-700 mb-1">Neues Passwort bestätigen *</label>
                             <input type="password" id="confirmPassword" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
                         </div>
 
                         <!-- Submit -->
                         <div class="pt-2">
-                            <button type="submit" class="bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-dark transition-all shadow-sm shadow-primary/20">Passwort Ã¤ndern</button>
+                            <button type="submit" class="bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary-dark transition-all shadow-sm shadow-primary/20">Passwort ändern</button>
                         </div>
                     </form>
                 </div>
@@ -417,7 +417,7 @@ $canEditContent = $isAdmin || $isEditor;
                                         </select>
                                     </div>
                                     <div>
-                                        <label for="fontBody" class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-1">FlieÃŸtext-Schrift</label>
+                                        <label for="fontBody" class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-1">Fließtext-Schrift</label>
                                         <select id="fontBody" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm">
                                             <option value="Forte">Forte</option>
                                             <option value="Public Sans">Public Sans</option>
@@ -436,18 +436,18 @@ $canEditContent = $isAdmin || $isEditor;
                             <h4 class="text-sm font-bold text-gray-900 mb-3">Navigation</h4>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">HauptmenÃ¼ (visuell)</label>
+                                    <label class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">Hauptmenü (visuell)</label>
                                     <div class="border border-gray-200 rounded-lg p-3 bg-white">
                                         <div id="menuMainBuilder" class="space-y-2"></div>
-                                        <button type="button" id="menuMainAdd" class="mt-3 px-3 py-2 rounded-lg bg-primary/10 text-primary text-sm font-bold">MenÃ¼punkt hinzufÃ¼gen</button>
+                                        <button type="button" id="menuMainAdd" class="mt-3 px-3 py-2 rounded-lg bg-primary/10 text-primary text-sm font-bold">Menüpunkt hinzufügen</button>
                                     </div>
                                     <textarea id="menuMainJson" rows="3" class="hidden"></textarea>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">Footer-MenÃ¼ (visuell)</label>
+                                    <label class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">Footer-Menü (visuell)</label>
                                     <div class="border border-gray-200 rounded-lg p-3 bg-white">
                                         <div id="menuFooterBuilder" class="space-y-2"></div>
-                                        <button type="button" id="menuFooterAdd" class="mt-3 px-3 py-2 rounded-lg bg-primary/10 text-primary text-sm font-bold">Footer-Link hinzufÃ¼gen</button>
+                                        <button type="button" id="menuFooterAdd" class="mt-3 px-3 py-2 rounded-lg bg-primary/10 text-primary text-sm font-bold">Footer-Link hinzufügen</button>
                                     </div>
                                     <textarea id="menuFooterJson" rows="3" class="hidden"></textarea>
                                 </div>
@@ -518,7 +518,7 @@ $canEditContent = $isAdmin || $isEditor;
 
                         <div class="settings-tab-pane" data-settings-pane="smtp">
                             <h4 class="text-sm font-bold text-gray-900 mb-3">Globale SMTP-Konfiguration</h4>
-                            <p class="text-xs text-gray-500 mb-4">Diese Einstellungen gelten systemweit fÃ¼r alle E-Mails. Formularspezifische SMTP-Daten Ã¼berschreiben diese nur, wenn sie explizit gesetzt sind.</p>
+                            <p class="text-xs text-gray-500 mb-4">Diese Einstellungen gelten systemweit für alle E-Mails. Formularspezifische SMTP-Daten überschreiben diese nur, wenn sie explizit gesetzt sind.</p>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label for="smtpHost" class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-1">SMTP Host</label>
@@ -537,7 +537,7 @@ $canEditContent = $isAdmin || $isEditor;
                                     <input type="password" id="smtpPass" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm" autocomplete="new-password">
                                 </div>
                                 <div>
-                                    <label for="smtpSecure" class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-1">VerschlÃ¼sselung</label>
+                                    <label for="smtpSecure" class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-1">Verschlüsselung</label>
                                     <select id="smtpSecure" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm">
                                         <option value="tls">TLS</option>
                                         <option value="ssl">SSL</option>

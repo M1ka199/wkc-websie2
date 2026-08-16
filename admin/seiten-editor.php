@@ -30,7 +30,7 @@ $pageId = intval($_GET['id'] ?? 0);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seiten-Editor â€“ CMS Backend</title>
+    <title>Seiten-Editor – CMS Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -70,7 +70,7 @@ $pageId = intval($_GET['id'] ?? 0);
             </div>
             <nav class="sidebar-nav space-y-1">
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="dashboard.php"><span class="material-symbols-outlined">dashboard</span><span class="sidebar-label">Dashboard</span></a>
-                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="beitraege.php"><span class="material-symbols-outlined">article</span><span class="sidebar-label">BeitrÃ¤ge</span></a>
+                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="beitraege.php"><span class="material-symbols-outlined">article</span><span class="sidebar-label">Beiträge</span></a>
                 <a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg" href="seiten.php"><span class="material-symbols-outlined">web</span><span class="sidebar-label">Seiten</span></a>
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="formulare.php"><span class="material-symbols-outlined">list_alt</span><span class="sidebar-label">Formulare</span></a>
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="galerien.php"><span class="material-symbols-outlined">photo_library</span><span class="sidebar-label">Galerien</span></a>
@@ -91,7 +91,7 @@ $pageId = intval($_GET['id'] ?? 0);
                 <h2 id="editorTitle" class="text-lg font-bold text-gray-900">Neue Seite</h2>
             </div>
             <div class="flex items-center gap-2">
-                <button id="deletePageBtn" class="px-3 py-2 rounded-lg border border-red-300 text-red-600 text-sm font-bold hidden">LÃ¶schen</button>
+                <button id="deletePageBtn" class="px-3 py-2 rounded-lg border border-red-300 text-red-600 text-sm font-bold hidden">Löschen</button>
                 <button id="savePageBtn" class="bg-primary text-white px-4 py-2.5 rounded-lg text-sm font-bold">Speichern</button>
             </div>
         </header>
@@ -141,7 +141,7 @@ $pageId = intval($_GET['id'] ?? 0);
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Status</label>
                         <select id="pageStatus" class="w-full rounded-lg border-gray-300">
                             <option value="draft">Entwurf</option>
-                            <option value="published">VerÃ¶ffentlicht</option>
+                            <option value="published">Veröffentlicht</option>
                             <option value="archived">Archiviert</option>
                         </select>
                     </div>
@@ -181,9 +181,9 @@ $pageId = intval($_GET['id'] ?? 0);
                 <div class="bg-white border border-gray-200 rounded-xl p-5 space-y-3">
                     <div class="flex items-center justify-between gap-2">
                         <h3 class="text-xs font-bold text-gray-700 uppercase tracking-wider">Startseiten-Slider</h3>
-                        <button id="addSliderItemBtn" type="button" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-primary text-white">Slide hinzufÃ¼gen</button>
+                        <button id="addSliderItemBtn" type="button" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-primary text-white">Slide hinzufügen</button>
                     </div>
-                    <p class="text-xs text-gray-500">Nur relevant fÃ¼r die Startseite. Reihenfolge entspricht der Anzeige im Slider.</p>
+                    <p class="text-xs text-gray-500">Nur relevant für die Startseite. Reihenfolge entspricht der Anzeige im Slider.</p>
                     <div id="sliderItemsList" class="space-y-3"></div>
                 </div>
             </aside>

@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Passwort vergessen
+ * WKC – Passwort vergessen
  */
 require_once __DIR__ . '/../api/config.php';
 header('Content-Type: text/html; charset=utf-8');
@@ -17,7 +17,7 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passwort vergessen â€“ WKC</title>
+    <title>Passwort vergessen – WKC</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -73,7 +73,7 @@ if (isset($_SESSION['user_id'])) {
 
                 <button type="submit" id="submitBtn" class="w-full h-12 bg-primary hover:bg-primary-dark text-white font-bold rounded-lg shadow-lg shadow-primary/20 transform transition-all active:scale-[0.98] focus:outline-none flex items-center justify-center gap-2">
                     <span class="material-symbols-outlined">mail</span>
-                    Link zum ZurÃ¼cksetzen senden
+                    Link zum Zurücksetzen senden
                 </button>
             </form>
 
@@ -81,15 +81,15 @@ if (isset($_SESSION['user_id'])) {
             <div id="successState" class="hidden px-8 pb-8">
                 <div class="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
                     <span class="material-symbols-outlined text-green-500 text-4xl mb-3 block">mark_email_read</span>
-                    <p class="text-sm text-green-700 font-medium">Falls ein Konto mit diesen Daten existiert, wurde eine E-Mail mit einem Link zum ZurÃ¼cksetzen des Passworts versendet.</p>
-                    <p class="text-xs text-green-600 mt-3">Bitte Ã¼berprÃ¼fen Sie auch Ihren Spam-Ordner.</p>
+                    <p class="text-sm text-green-700 font-medium">Falls ein Konto mit diesen Daten existiert, wurde eine E-Mail mit einem Link zum Zurücksetzen des Passworts versendet.</p>
+                    <p class="text-xs text-green-600 mt-3">Bitte überprüfen Sie auch Ihren Spam-Ordner.</p>
                 </div>
             </div>
 
             <div class="bg-gray-50 px-8 py-4 border-t border-gray-100 flex justify-between items-center">
                 <a class="text-xs text-gray-500 hover:text-primary flex items-center gap-1 transition-colors" href="index.php">
                     <span class="material-symbols-outlined text-[14px]">arrow_back</span>
-                    ZurÃ¼ck zum Login
+                    Zurück zum Login
                 </a>
                 <a class="text-xs text-gray-500 hover:text-primary flex items-center gap-1 transition-colors" href="../index.html">
                     <span class="material-symbols-outlined text-[14px]">arrow_back</span>
@@ -139,7 +139,7 @@ if (isset($_SESSION['user_id'])) {
         }
 
         btn.disabled = false;
-        btn.innerHTML = '<span class="material-symbols-outlined">mail</span> Link zum ZurÃ¼cksetzen senden';
+        btn.innerHTML = '<span class="material-symbols-outlined">mail</span> Link zum Zurücksetzen senden';
     });
     </script>
 </body>

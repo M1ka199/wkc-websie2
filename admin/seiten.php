@@ -29,7 +29,7 @@ if (!$canEditContent) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seiten â€“ CMS Backend</title>
+    <title>Seiten – CMS Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@ if (!$canEditContent) {
             </div>
             <nav class="sidebar-nav space-y-1">
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="dashboard.php"><span class="material-symbols-outlined">dashboard</span><span class="sidebar-label">Dashboard</span></a>
-                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="beitraege.php"><span class="material-symbols-outlined">article</span><span class="sidebar-label">BeitrÃ¤ge</span></a>
+                <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="beitraege.php"><span class="material-symbols-outlined">article</span><span class="sidebar-label">Beiträge</span></a>
                 <a class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg" href="seiten.php"><span class="material-symbols-outlined">web</span><span class="sidebar-label">Seiten</span></a>
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="formulare.php"><span class="material-symbols-outlined">list_alt</span><span class="sidebar-label">Formulare</span></a>
                 <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light" href="galerien.php"><span class="material-symbols-outlined">photo_library</span><span class="sidebar-label">Galerien</span></a>
@@ -133,7 +133,7 @@ if (!$canEditContent) {
                         <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Pfad</th>
                         <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
                         <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Formulare</th>
-                        <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">GeÃ¤ndert</th>
+                        <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Geändert</th>
                         <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Aktionen</th>
                     </tr>
                     </thead>

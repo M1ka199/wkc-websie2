@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Article Editor (Admin)
+ * WKC – Article Editor (Admin)
  * Create / Edit articles with WYSIWYG editor, featured image, tags, SEO, is_funding flag.
  */
 require_once __DIR__ . '/../api/config.php';
@@ -27,7 +27,7 @@ $isEditing = $articleId > 0;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $isEditing ? 'Beitrag bearbeiten' : 'Neuer Beitrag' ?> â€“ WKC</title>
+    <title><?= $isEditing ? 'Beitrag bearbeiten' : 'Neuer Beitrag' ?> – WKC</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -83,7 +83,7 @@ $isEditing = $articleId > 0;
         <div class="flex items-center gap-4">
             <a href="beitraege.php" class="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors">
                 <span class="material-symbols-outlined">arrow_back</span>
-                <span class="text-sm font-medium hidden sm:inline">BeitrÃ¤ge</span>
+                <span class="text-sm font-medium hidden sm:inline">Beiträge</span>
             </a>
             <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
             <a href="dashboard.php" class="flex items-center gap-2">
@@ -108,7 +108,7 @@ $isEditing = $articleId > 0;
         <div class="flex flex-wrap items-center gap-2 mb-6 text-sm">
             <a class="text-gray-400 font-medium hover:text-primary" href="dashboard.php">Dashboard</a>
             <span class="material-symbols-outlined text-sm text-gray-300">chevron_right</span>
-            <a class="text-gray-400 font-medium hover:text-primary" href="beitraege.php">BeitrÃ¤ge</a>
+            <a class="text-gray-400 font-medium hover:text-primary" href="beitraege.php">Beiträge</a>
             <span class="material-symbols-outlined text-sm text-gray-300">chevron_right</span>
             <span class="text-gray-900 font-semibold"><?= $isEditing ? 'Beitrag bearbeiten' : 'Neuer Beitrag' ?></span>
         </div>
@@ -166,7 +166,7 @@ $isEditing = $articleId > 0;
                         <textarea
                             id="articleExcerpt"
                             class="form-textarea w-full border-none focus:ring-0 p-0 text-gray-700 placeholder:text-gray-300 resize-none"
-                            placeholder="Kurze Zusammenfassung fÃ¼r die Vorschau..."
+                            placeholder="Kurze Zusammenfassung für die Vorschau..."
                             rows="2"></textarea>
                     </label>
                 </div>
@@ -185,17 +185,17 @@ $isEditing = $articleId > 0;
                             <span class="material-symbols-outlined">format_underlined</span>
                         </button>
                         <div class="w-px h-6 bg-gray-200 mx-1"></div>
-                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('formatBlock', '<h2>')" title="Ãœberschrift 2">
+                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('formatBlock', '<h2>')" title="Überschrift 2">
                             <span class="text-sm font-bold">H2</span>
                         </button>
-                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('formatBlock', '<h3>')" title="Ãœberschrift 3">
+                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('formatBlock', '<h3>')" title="Überschrift 3">
                             <span class="text-sm font-bold">H3</span>
                         </button>
                         <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('formatBlock', '<p>')" title="Absatz">
                             <span class="material-symbols-outlined">notes</span>
                         </button>
                         <div class="w-px h-6 bg-gray-200 mx-1"></div>
-                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('insertUnorderedList')" title="AufzÃ¤hlung">
+                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('insertUnorderedList')" title="Aufzählung">
                             <span class="material-symbols-outlined">format_list_bulleted</span>
                         </button>
                         <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('insertOrderedList')" title="Nummerierte Liste">
@@ -205,13 +205,13 @@ $isEditing = $articleId > 0;
                             <span class="material-symbols-outlined">format_quote</span>
                         </button>
                         <div class="w-px h-6 bg-gray-200 mx-1"></div>
-                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="insertLink()" title="Link einfÃ¼gen">
+                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="insertLink()" title="Link einfügen">
                             <span class="material-symbols-outlined">link</span>
                         </button>
-                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="triggerInlineImageUpload()" title="Bild einfÃ¼gen">
+                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="triggerInlineImageUpload()" title="Bild einfügen">
                             <span class="material-symbols-outlined">image</span>
                         </button>
-                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="insertHtmlEmbed()" title="HTML/Embed einfÃ¼gen">
+                        <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="insertHtmlEmbed()" title="HTML/Embed einfügen">
                             <span class="material-symbols-outlined">code</span>
                         </button>
                         <button class="toolbar-btn p-2 hover:bg-white rounded text-gray-700 hover:shadow-sm transition-all" onclick="execCmd('removeFormat')" title="Formatierung entfernen">
@@ -230,7 +230,7 @@ $isEditing = $articleId > 0;
                 <!-- Status Card -->
                 <div class="bg-white rounded-xl border border-gray-200 shadow-sm sticky top-20">
                     <div class="p-5 border-b border-gray-200">
-                        <h3 class="text-gray-900 text-xs font-bold uppercase tracking-wider">VerÃ¶ffentlichung</h3>
+                        <h3 class="text-gray-900 text-xs font-bold uppercase tracking-wider">Veröffentlichung</h3>
                     </div>
                     <div class="p-5 flex flex-col gap-4">
                         <div>
@@ -240,7 +240,7 @@ $isEditing = $articleId > 0;
                             </label>
                             <select id="articleStatus" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2 font-medium">
                                 <option value="draft">Entwurf</option>
-                                <option value="published">VerÃ¶ffentlicht</option>
+                                <option value="published">Veröffentlicht</option>
                                 <option value="archived">Archiviert</option>
                             </select>
                         </div>
@@ -271,7 +271,7 @@ $isEditing = $articleId > 0;
                                     <span class="material-symbols-outlined text-gray-400 text-lg">expand_more</span>
                                 </button>
                                 <div id="authorList" class="hidden absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
-                                    <p class="text-xs text-gray-400 px-3 py-2 border-b border-gray-100">Autor auswÃ¤hlen</p>
+                                    <p class="text-xs text-gray-400 px-3 py-2 border-b border-gray-100">Autor auswählen</p>
                                     <div id="authorOptions"></div>
                                 </div>
                             </div>
@@ -284,21 +284,21 @@ $isEditing = $articleId > 0;
                         <div class="flex items-center justify-between">
                             <label class="text-sm text-gray-700 font-medium flex items-center gap-2 cursor-pointer" for="isFunding">
                                 <span class="material-symbols-outlined text-base text-blue-500">volunteer_activism</span>
-                                FÃ¶rderung
+                                Förderung
                             </label>
                             <label class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" id="isFunding" class="sr-only peer">
                                 <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-500"></div>
                             </label>
                         </div>
-                        <p class="text-xs text-gray-400 -mt-2">Markiert diesen Beitrag als gefÃ¶rderte MaÃŸnahme.</p>
+                        <p class="text-xs text-gray-400 -mt-2">Markiert diesen Beitrag als geförderte Maßnahme.</p>
 
                         <hr class="border-gray-100">
 
                         <!-- Tags -->
                         <div>
-                            <label class="text-xs font-bold text-gray-900 uppercase tracking-wider block mb-2">SchlagwÃ¶rter</label>
-                            <input id="articleTags" type="text" placeholder="z.B. spielplatz, fÃ¶rderung" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2">
+                            <label class="text-xs font-bold text-gray-900 uppercase tracking-wider block mb-2">Schlagwörter</label>
+                            <input id="articleTags" type="text" placeholder="z.B. spielplatz, förderung" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2">
                             <p class="text-xs text-gray-400 mt-1">Kommagetrennt eingeben</p>
                         </div>
 
@@ -317,7 +317,7 @@ $isEditing = $articleId > 0;
                                 </div>
                                 <div>
                                     <label class="text-xs text-gray-500 font-medium mb-1 block">Meta-Beschreibung</label>
-                                    <textarea id="metaDescription" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2 resize-none" rows="3" placeholder="Beschreibung fÃ¼r Suchmaschinen..."></textarea>
+                                    <textarea id="metaDescription" class="w-full rounded-lg border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary text-sm py-2 resize-none" rows="3" placeholder="Beschreibung für Suchmaschinen..."></textarea>
                                 </div>
                                 <div>
                                     <label class="text-xs text-gray-500 font-medium mb-1 block">Canonical URL</label>
@@ -338,7 +338,7 @@ $isEditing = $articleId > 0;
                     <div class="p-4 bg-bg-light/50 border-t border-gray-100 flex justify-center <?= $isEditing ? '' : 'hidden' ?>" id="deleteSection">
                         <button id="btnDelete" class="text-red-500 text-xs font-bold hover:underline flex items-center gap-1">
                             <span class="material-symbols-outlined text-sm">delete</span>
-                            Beitrag lÃ¶schen
+                            Beitrag löschen
                         </button>
                     </div>
                 </div>
@@ -371,7 +371,7 @@ $isEditing = $articleId > 0;
                             <div id="previewAuthorAvatar" class="w-5 h-5 rounded-full bg-primary/10"></div>
                             <span id="previewAuthorName"></span>
                         </div>
-                        <span id="previewFundingBadge" class="hidden bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-bold">FÃ¶rderung</span>
+                        <span id="previewFundingBadge" class="hidden bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-bold">Förderung</span>
                     </div>
                     <h1 id="previewTitle" class="text-2xl lg:text-3xl font-black text-gray-900 mb-3 leading-tight"></h1>
                     <p id="previewExcerpt" class="text-gray-500 text-base lg:text-lg mb-6 leading-relaxed"></p>

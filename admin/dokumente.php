@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Dokumente verwalten
+ * WKC – Dokumente verwalten
  */
 require_once __DIR__ . '/../api/config.php';
 session_name(SESSION_NAME);
@@ -34,7 +34,7 @@ if (!$canEditContent) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokumente â€“ WKC Backend</title>
+    <title>Dokumente – WKC Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -92,9 +92,9 @@ if (!$canEditContent) {
                         <span class="sidebar-label">Dashboard</span>
                     </a>
                     <?php if ($canEditContent): ?>
-                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="BeitrÃ¤ge">
+                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="Beiträge">
                         <span class="material-symbols-outlined">article</span>
-                        <span class="sidebar-label">BeitrÃ¤ge</span>
+                        <span class="sidebar-label">Beiträge</span>
                     </a>
                     <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="seiten.php" title="Seiten">
                         <span class="material-symbols-outlined">web</span>
@@ -204,7 +204,7 @@ if (!$canEditContent) {
                                     <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Dokument</th>
                                     <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider">Tags</th>
                                     <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Dateiname</th>
-                                    <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider hidden md:table-cell">GrÃ¶ÃŸe</th>
+                                    <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider hidden md:table-cell">Größe</th>
                                     <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider hidden md:table-cell">Datum</th>
                                     <th class="px-6 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Aktionen</th>
                                 </tr>

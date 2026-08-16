@@ -1,6 +1,6 @@
 <?php
 /**
- * WKC â€“ Termine verwalten
+ * WKC – Termine verwalten
  */
 require_once __DIR__ . '/../api/config.php';
 session_name(SESSION_NAME);
@@ -34,7 +34,7 @@ if (!$canEditContent) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termine â€“ WKC Backend</title>
+    <title>Termine – WKC Backend</title>
     <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -92,9 +92,9 @@ if (!$canEditContent) {
                         <span class="sidebar-label">Dashboard</span>
                     </a>
                     <?php if ($canEditContent): ?>
-                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="BeitrÃ¤ge">
+                    <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="beitraege.php" title="Beiträge">
                         <span class="material-symbols-outlined">article</span>
-                        <span class="sidebar-label">BeitrÃ¤ge</span>
+                        <span class="sidebar-label">Beiträge</span>
                     </a>
                     <a class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-500 hover:bg-bg-light transition-colors font-medium" href="seiten.php" title="Seiten">
                         <span class="material-symbols-outlined">web</span>
@@ -192,7 +192,7 @@ if (!$canEditContent) {
                         </div>
                         <div>
                             <p class="text-sm font-medium text-gray-500">Gesamt</p>
-                            <p class="text-2xl font-black text-gray-900" id="statTotal">â€“</p>
+                            <p class="text-2xl font-black text-gray-900" id="statTotal">–</p>
                         </div>
                     </div>
                     <div class="bg-white p-5 rounded-xl border border-gray-200 flex items-center gap-4">
@@ -201,7 +201,7 @@ if (!$canEditContent) {
                         </div>
                         <div>
                             <p class="text-sm font-medium text-gray-500">Anstehend</p>
-                            <p class="text-2xl font-black text-gray-900" id="statUpcoming">â€“</p>
+                            <p class="text-2xl font-black text-gray-900" id="statUpcoming">–</p>
                         </div>
                     </div>
                     <div class="bg-white p-5 rounded-xl border border-gray-200 flex items-center gap-4">
@@ -210,7 +210,7 @@ if (!$canEditContent) {
                         </div>
                         <div>
                             <p class="text-sm font-medium text-gray-500">Vergangen</p>
-                            <p class="text-2xl font-black text-gray-900" id="statPast">â€“</p>
+                            <p class="text-2xl font-black text-gray-900" id="statPast">–</p>
                         </div>
                     </div>
                 </div>
@@ -276,7 +276,7 @@ if (!$canEditContent) {
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-1">Sichtbarkeit</label>
                             <select id="eventVisibility" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
-                                <option value="public">Ã–ffentlich</option>
+                                <option value="public">Öffentlich</option>
                                 <option value="internal">Intern (nur Mitglieder)</option>
                             </select>
                         </div>
